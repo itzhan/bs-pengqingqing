@@ -1,0 +1,314 @@
+{
+  "data": [
+    {
+      "path": "/home",
+      "name": "home",
+      "component": "/home/index",
+      "meta": {
+        "icon": "HomeFilled",
+        "title": "首页",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": true,
+        "isKeepAlive": true
+      }
+    },
+    {
+      "path": "/user",
+      "name": "user",
+      "redirect": "/user/list",
+      "meta": {
+        "icon": "User",
+        "title": "用户管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/user/list",
+          "name": "userList",
+          "component": "/user/list/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "用户列表",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/heritage",
+      "name": "heritage",
+      "redirect": "/heritage/projects",
+      "meta": {
+        "icon": "Collection",
+        "title": "非遗管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/heritage/projects",
+          "name": "heritageProjects",
+          "component": "/heritage/projects/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "非遗项目",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/heritage/categories",
+          "name": "skillCategories",
+          "component": "/heritage/categories/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "技艺类别",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/master",
+      "name": "master",
+      "redirect": "/master/profiles",
+      "meta": {
+        "icon": "Avatar",
+        "title": "师徒管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/master/profiles",
+          "name": "masterProfiles",
+          "component": "/master/profiles/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "师傅档案",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/master/relations",
+          "name": "masterRelations",
+          "component": "/master/relations/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "师徒关系",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/teaching",
+      "name": "teaching",
+      "redirect": "/teaching/tasks",
+      "meta": {
+        "icon": "Notebook",
+        "title": "教学管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/teaching/tasks",
+          "name": "teachingTasks",
+          "component": "/teaching/tasks/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "教学任务",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/teaching/materials",
+          "name": "learningMaterials",
+          "component": "/teaching/materials/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "学习材料",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/artwork",
+      "name": "artwork",
+      "redirect": "/artwork/list",
+      "meta": {
+        "icon": "Picture",
+        "title": "作品管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/artwork/list",
+          "name": "artworkList",
+          "component": "/artwork/list/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "作品列表",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/artwork/growth",
+          "name": "growthRecords",
+          "component": "/artwork/growth/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "成长记录",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/activity",
+      "name": "activity",
+      "redirect": "/activity/list",
+      "meta": {
+        "icon": "Calendar",
+        "title": "活动管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/activity/list",
+          "name": "activityList",
+          "component": "/activity/list/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "活动列表",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/announcement",
+      "name": "announcement",
+      "redirect": "/announcement/list",
+      "meta": {
+        "icon": "Bell",
+        "title": "公告管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/announcement/list",
+          "name": "announcementList",
+          "component": "/announcement/list/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "公告列表",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "/system",
+      "name": "system",
+      "redirect": "/system/audit-log",
+      "meta": {
+        "icon": "Setting",
+        "title": "系统管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/system/audit-log",
+          "name": "auditLog",
+          "component": "/system/auditLog/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "审计日志",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    }
+  ]
+}
