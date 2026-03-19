@@ -6,17 +6,20 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.heritage.admin.common.BusinessException;
 import com.heritage.admin.common.PageResult;
 import com.heritage.admin.dto.ArtworkDTO;
-import com.heritage.admin.entity.Artwork;
-import com.heritage.admin.entity.GrowthRecord;
-import com.heritage.admin.entity.MasterApprenticeRelation;
+import com.heritage.admin.entity.*;
 import com.heritage.admin.mapper.ArtworkMapper;
 import com.heritage.admin.mapper.GrowthRecordMapper;
+import com.heritage.admin.mapper.HeritageProjectMapper;
 import com.heritage.admin.mapper.MasterApprenticeRelationMapper;
+import com.heritage.admin.mapper.SysUserMapper;
 import com.heritage.admin.service.ArtworkService;
+import com.heritage.admin.vo.ArtworkVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,6 +28,8 @@ public class ArtworkServiceImpl extends ServiceImpl<ArtworkMapper, Artwork> impl
 
     private final MasterApprenticeRelationMapper masterApprenticeRelationMapper;
     private final GrowthRecordMapper growthRecordMapper;
+    private final SysUserMapper sysUserMapper;
+    private final HeritageProjectMapper heritageProjectMapper;
 
     @Override
     public void createArtwork(Long apprenticeId, ArtworkDTO dto) {
@@ -130,7 +135,7 @@ public class ArtworkServiceImpl extends ServiceImpl<ArtworkMapper, Artwork> impl
     }
 
     @Override
-    public PageResult<Artwork> listAll(int page, int size, Integer status) {
+    public PageResult<ArtworkVO> listAll(int page, int size, Integer status) {
         Page<Artwork> pageParam = new Page<>(page, size);
         LambdaQueryWrapper<Artwork> wrapper = new LambdaQueryWrapper<>();
 
@@ -140,6 +145,77 @@ public class ArtworkServiceImpl extends ServiceImpl<ArtworkMapper, Artwork> impl
 
         wrapper.orderByDesc(Artwork::getCreatedAt);
         Page<Artwork> result = page(pageParam, wrapper);
-        return new PageResult<>(result.getRecords(), result.getTotal(), result.getCurrent(), result.getSize());
+
+        // 批量查询创作者姓名
+        List<Long> apprenticeIds = result.getRecords().stream()
+                .map(Artwork::getApprenticeId)
+                .filter(id -> id != null)
+                .distinct()
+                .collect(Collectors.toList());
+        Map<Long, SysUser> userMap = java.util.Collections.emptyMap();
+        if (!apprenticeIds.isEmpty()) {
+            List<SysUser> users = sysUserMapper.selectBatchIds(apprenticeIds);
+            userMap = users.stream()
+                    .collect(Collectors.toMap(SysUser::getId, user -> user));
+        }
+
+        // 批量查询所属项目名
+        List<Long> projectIds = result.getRecords().stream()
+                .map(Artwork::getHeritageProjectId)
+                .filter(id -> id != null)
+                .distinct()
+                .collect(Collectors.toList());
+        Map<Long, HeritageProject> projectMap = java.util.Collections.emptyMap();
+        if (!projectIds.isEmpty()) {
+            List<HeritageProject> projects = heritageProjectMapper.selectBatchIds(projectIds);
+            projectMap = projects.stream()
+                    .collect(Collectors.toMap(HeritageProject::getId, project -> project));
+        }
+
+        Map<Long, SysUser> finalUserMap = userMap;
+        Map<Long, HeritageProject> finalProjectMap = projectMap;
+        List<ArtworkVO> voList = result.getRecords().stream().map(a -> {
+            ArtworkVO vo = new ArtworkVO();
+            BeanUtils.copyProperties(a, vo);
+            if (a.getApprenticeId() != null) {
+                SysUser apprentice = finalUserMap.get(a.getApprenticeId());
+                if (apprentice != null) {
+                    vo.setApprenticeName(apprentice.getRealName() != null ? apprentice.getRealName() : apprentice.getUsername());
+                    vo.setApprenticeAvatar(apprentice.getAvatar());
+                } else {
+                    vo.setApprenticeName("未知用户");
+                }
+            }
+            if (a.getHeritageProjectId() != null) {
+                HeritageProject project = finalProjectMap.get(a.getHeritageProjectId());
+                if (project != null) {
+                    vo.setProjectName(project.getName());
+                    vo.setProjectImageUrl(project.getImageUrl());
+                } else {
+                    vo.setProjectName("未知项目");
+                }
+            }
+            // 解析 imageUrls JSON 取第一张图
+            if (a.getImageUrls() != null && !a.getImageUrls().isEmpty()) {
+                String urls = a.getImageUrls().trim();
+                if (urls.startsWith("[")) {
+                    // JSON数组格式
+                    urls = urls.substring(1);
+                    if (urls.endsWith("]")) urls = urls.substring(0, urls.length() - 1);
+                    String[] parts = urls.split(",");
+                    if (parts.length > 0) {
+                        String firstUrl = parts[0].trim().replaceAll("^\"|\"$", "");
+                        vo.setFirstImageUrl(firstUrl);
+                    }
+                } else {
+                    // 单个URL或逗号分隔
+                    String[] parts = urls.split(",");
+                    vo.setFirstImageUrl(parts[0].trim());
+                }
+            }
+            return vo;
+        }).collect(Collectors.toList());
+
+        return new PageResult<>(voList, result.getTotal(), result.getCurrent(), result.getSize());
     }
 }

@@ -24,7 +24,7 @@ public class ArtworkReviewController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("点评徒弟作品")
     public Result<?> createReview(@Valid @RequestBody ArtworkReviewDTO dto) {
         SysUser currentUser = getCurrentUser();

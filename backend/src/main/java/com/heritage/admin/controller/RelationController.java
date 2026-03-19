@@ -1,6 +1,7 @@
 package com.heritage.admin.controller;
 
 import com.heritage.admin.common.PageResult;
+import com.heritage.admin.common.BusinessException;
 import com.heritage.admin.common.Result;
 import com.heritage.admin.config.AuditOperation;
 import com.heritage.admin.dto.RelationApplyDTO;
@@ -35,9 +36,26 @@ public class RelationController {
 
     @PutMapping("/{id}/approve")
     @AuditOperation("审核拜师申请")
-    public Result<?> approve(@PathVariable Long id, @RequestParam Boolean approved) {
+    public Result<?> approve(
+            @PathVariable Long id,
+            @RequestParam(required = false) Boolean approved,
+            @RequestParam(required = false) Integer status) {
         SysUser currentUser = getCurrentUser();
+        if (approved == null && status != null) {
+            approved = status == 1;
+        }
+        if (approved == null) {
+            throw new BusinessException("审核参数不能为空");
+        }
         relationService.approveRelation(id, currentUser.getId(), approved);
+        return Result.success();
+    }
+
+    @PutMapping("/{id}/cancel")
+    @AuditOperation("撤回拜师申请")
+    public Result<?> cancel(@PathVariable Long id) {
+        SysUser currentUser = getCurrentUser();
+        relationService.cancelRelation(id, currentUser.getId());
         return Result.success();
     }
 
@@ -50,25 +68,31 @@ public class RelationController {
     }
 
     @GetMapping("/master")
-    public Result<?> getMasterRelations() {
+    public Result<?> getMasterRelations(
+            @RequestParam(required = false) Integer status,
+            @RequestParam(required = false) Long apprenticeId) {
         SysUser currentUser = getCurrentUser();
-        List<MasterApprenticeRelation> result = relationService.getByMasterId(currentUser.getId());
+        List<MasterApprenticeRelation> result = relationService.getByMasterId(currentUser.getId(), status, apprenticeId);
         return Result.success(result);
     }
 
     @GetMapping("/apprentice")
-    public Result<?> getApprenticeRelations() {
+    public Result<?> getApprenticeRelations(
+            @RequestParam(required = false) Integer status,
+            @RequestParam(required = false) Long masterId) {
         SysUser currentUser = getCurrentUser();
-        List<MasterApprenticeRelation> result = relationService.getByApprenticeId(currentUser.getId());
+        List<MasterApprenticeRelation> result = relationService.getByApprenticeId(currentUser.getId(), status, masterId);
         return Result.success(result);
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listAll(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) Integer status) {
-        PageResult<MasterApprenticeRelation> result = relationService.listRelations(page, size, status);
+            @RequestParam(required = false) Integer status,
+            @RequestParam(required = false) Long masterId,
+            @RequestParam(required = false) Long apprenticeId) {
+        PageResult<MasterApprenticeRelation> result = relationService.listRelations(page, size, status, masterId, apprenticeId);
         return Result.success(result);
     }
 }

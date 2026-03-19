@@ -26,4 +26,19 @@ public class MasterApprenticeRelation {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
+
+    @TableField(exist = false)
+    private String masterName;
+
+    @TableField(exist = false)
+    private String masterAvatar;
+
+    @TableField(exist = false)
+    private String apprenticeName;
+
+    @TableField(exist = false)
+    private String apprenticeAvatar;
+
+    @TableField(exist = false)
+    private String projectName;
 }

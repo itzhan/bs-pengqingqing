@@ -28,7 +28,7 @@ public class ActivityController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("发布活动")
     public Result<?> createActivity(@Valid @RequestBody ActivityDTO dto) {
         SysUser currentUser = getCurrentUser();
@@ -49,7 +49,7 @@ public class ActivityController {
         return Result.success();
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listActivities(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

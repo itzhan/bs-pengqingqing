@@ -36,14 +36,14 @@ public class MasterProfileController {
         return Result.success(profile);
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     public Result<?> createOrUpdateProfile(@Valid @RequestBody MasterProfileDTO dto) {
         SysUser currentUser = getCurrentUser();
         profileService.saveOrUpdateProfile(currentUser.getId(), dto);
         return Result.success();
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listProfiles(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

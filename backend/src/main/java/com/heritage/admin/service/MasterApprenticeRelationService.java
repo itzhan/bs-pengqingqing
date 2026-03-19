@@ -10,8 +10,9 @@ import java.util.List;
 public interface MasterApprenticeRelationService extends IService<MasterApprenticeRelation> {
     void applyRelation(Long apprenticeId, RelationApplyDTO dto);
     void approveRelation(Long relationId, Long masterId, boolean approved);
+    void cancelRelation(Long relationId, Long apprenticeId);
     void dissolveRelation(Long relationId, Long userId, String reason);
-    List<MasterApprenticeRelation> getByMasterId(Long masterId);
-    List<MasterApprenticeRelation> getByApprenticeId(Long apprenticeId);
-    PageResult<MasterApprenticeRelation> listRelations(int page, int size, Integer status);
+    List<MasterApprenticeRelation> getByMasterId(Long masterId, Integer status, Long apprenticeId);
+    List<MasterApprenticeRelation> getByApprenticeId(Long apprenticeId, Integer status, Long masterId);
+    PageResult<MasterApprenticeRelation> listRelations(int page, int size, Integer status, Long masterId, Long apprenticeId);
 }

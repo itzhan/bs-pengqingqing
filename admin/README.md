@@ -1,212 +1,104 @@
-# Geeker-Admin
+<img  src="https://www.qiniu.lingchen.kim/github-cover-light6.webp" />
 
-### 介绍 📖
+<br />
+<h1 align="center">Art Design Pro</h1>
+<p align="center">A backend system template that combines design aesthetics with efficient development, helping you quickly build professional-grade applications</p>
+<div align="center">English | <a href="./README.zh-CN.md">简体中文</a></div>
 
-Geeker-Admin 一款基于 Vue3.4、TypeScript、Vite5、Pinia、Element-Plus 开源的后台管理框架，使用目前最新技术栈开发。项目提供强大的 [ProTable](https://juejin.cn/post/7166068828202336263) 组件，在一定程度上提高您的开发效率。另外本项目还封装了一些常用组件、Hooks、指令、动态路由、按钮级别权限控制等功能。
+<br />
+<div align="center">
 
-### React 版本 🔥
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE) [![github stars](https://img.shields.io/github/stars/Daymychen/art-design-pro)](https://github.com/Daymychen/art-design-pro/stargazers) [![github forks](https://img.shields.io/github/forks/Daymychen/art-design-pro)](https://github.com/Daymychen/art-design-pro/network/members)
 
-- 有需要请加底部微信了解、购买
+</div>
+<br />
 
-- Link：https://pro.spicyboy.cn
+## What makes this project special?
 
-### 在线预览 👀
+**Interface Design**: Modern UI design with smooth interactions, focusing on user experience and visual design
 
-- Link：https://admin.spicyboy.cn
+**Quick Start**: Clean architecture + comprehensive documentation, easy for backend developers to use
 
-### 代码仓库 ⭐
+**Rich Components**: Built-in high-quality components for data display, forms, and more to meet different business scenarios
 
-- Gitee：https://gitee.com/HalseySpicy/Geeker-Admin
-- GitHub：https://github.com/HalseySpicy/Geeker-Admin
+**Smooth Interactions**: Button clicks, theme switching, page transitions, chart animations - experience comparable to commercial products
 
-### 项目文档 📚
+**Efficient Development**: Built-in practical APIs like useTable and ArtForm to significantly improve development efficiency
 
-- 项目更新日志：[CHANGELOG.md](./CHANGELOG.md)
+**Clean Scripts**: Built-in one-click cleanup script to quickly remove demo data and get a ready-to-develop base project
 
-- 项目文档地址：https://docs.spicyboy.cn
+## Tech Stack
 
-### 项目功能 🔨
+Development Framework: Vue3, TypeScript, Vite, Element-Plus, Tailwind CSS
 
-- 使用 Vue3.4 + TypeScript 开发，单文件组件**＜script setup＞**
-- 采用 Vite5 作为项目开发、打包工具（配置 gzip/brotli 打包、tsx 语法、跨域代理…）
-- 使用 Pinia 替代 Vuex，轻量、简单、易用，集成 Pinia 持久化插件
-- 使用 TypeScript 对 Axios 整个二次封装（请求拦截、取消、常用请求封装…）
-- 基于 Element 二次封装 [ProTable](https://juejin.cn/post/7166068828202336263) 组件，表格页面全部为配置项 Columns
-- 支持 Element 组件大小切换、多主题布局、暗黑模式、i18n 国际化
-- 使用 VueRouter 配置动态路由权限拦截、路由懒加载，支持页面按钮权限控制
-- 使用 KeepAlive 对页面进行缓存，支持多级嵌套路由缓存
-- 常用自定义指令开发（权限、复制、水印、拖拽、节流、防抖、长按…）
-- 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
-- 使用 husky、lint-staged、commitlint、czg、cz-git 规范提交信息
+Code Standards: Eslint, Prettier, Stylelint, Husky, Lint-staged, cz-git
 
-### 安装使用步骤 📔
+## Preview
 
-- **Clone：**
+<kbd><img src="https://www.qiniu.lingchen.kim/github-c1.webp" alt="Light Theme"/></kbd>
 
-```text
-# Gitee
-git clone https://gitee.com/HalseySpicy/Geeker-Admin.git
-# GitHub
-git clone https://github.com/HalseySpicy/Geeker-Admin.git
-```
+<kbd><img src="https://www.qiniu.lingchen.kim/github-c2.webp" alt="Light Theme"/></kbd>
 
-- **Install：**
+<kbd><img src="https://www.qiniu.lingchen.kim/github-c4.webp" alt="Dark Theme"/></kbd>
 
-```text
+<kbd><img src="https://www.qiniu.lingchen.kim/github-c5.webp" alt="Dark Theme"/></kbd>
+
+## Quick Access
+
+[Live Demo](https://www.artd.pro) | [Official Documentation](https://www.artd.pro/docs) | [Changelog](./CHANGELOG.en.md)
+
+## Installation & Setup
+
+```bash
+# Install dependencies
 pnpm install
-```
 
-- **Run：**
+# If pnpm install fails, try using the command below
+pnpm install --ignore-scripts
 
-```text
+# Start local development environment
 pnpm dev
-pnpm serve
+
+# Build for production
+pnpm build
 ```
 
-- **Build：**
+## Clean Version
 
-```text
-# 开发环境
-pnpm build:dev
+The project includes a cleanup script to quickly remove demo data and provide developers with a ready-to-develop base project
 
-# 测试环境
-pnpm build:test
-
-# 生产环境
-pnpm build:pro
+```bash
+pnpm clean:dev
 ```
 
-- **Lint：**
+## Technical Support
 
-```text
-# eslint 检测代码
-pnpm lint:eslint
+QQ Group: <a href="https://qm.qq.com/cgi-bin/qm/qr?k=Gg6yzZLFaNgmRhK0T5Qcjf7-XcAFWWXm&jump_from=webapi&authKey=YpRKVJQyFKYbGTiKw0GJ/YQXnNF+GdXNZC5beQQqnGZTvuLlXoMO7nw5fNXvmVhA">1038930070</a> (Click the link to join the group chat)
 
-# prettier 格式化代码
-pnpm lint:prettier
+## Browser Compatibility
 
-# stylelint 格式化样式
-pnpm lint:stylelint
-```
+Supports modern mainstream browsers including Chrome, Safari, Firefox, and more.
 
-- **commit：**
+## Contributing
 
-```text
-# 提交代码（提交前会自动执行 lint:lint-staged 命令）
-pnpm commit
-```
+We sincerely welcome and appreciate the support of every contributor! Whether you have new ideas, feature suggestions, or code optimizations, you can participate in the following ways:
 
-### 项目截图 📷
+Submit Pull Requests: Share your code and help the project grow.
 
-- 登录页：
+Create GitHub Issues: Provide bug feedback or new feature suggestions to help us improve together.
 
-![login_light](https://i.imgtg.com/2023/04/13/8tknp.png)
+Every contribution you make takes this project one step further! Come join our open source community!
 
-![login_dark](https://i.imgtg.com/2023/04/13/8tmpP.png)
+## Continuous Optimization & Extension
 
-- 首页：
+The project maintains active updates, supports the latest frontend tech stack, is compatible with mainstream frameworks, and ensures long-term stability and extensibility. Community-driven feedback mechanisms allow your needs to be quickly integrated into project iterations.
 
-![home_light](https://i.imgtg.com/2023/04/13/8tl1j.png)
+## Donation
 
-![home_dark](https://i.imgtg.com/2023/04/13/8tpfb.png)
+If you feel this project has reduced your development costs and solved problems in your work/life, you can support us through the following ways:
 
-- 表格页：
+<img src="https://www.qiniu.lingchen.kim/%E7%BB%84%202%402x%202.png" alt="Donation QR Code"/>
 
-![table_light](https://i.imgtg.com/2023/04/13/8tfMx.png)
+## Star History
 
-![table_dark](https://i.imgtg.com/2023/04/13/8tv8F.png)
-
-- 数据可视化
-
-![dashboard](https://i.imgtg.com/2023/04/14/82Grx.png)
-
-- 数据大屏：
-
-![dataScreen](https://i.imgtg.com/2023/01/16/QP8HF.png)
-
-### 文件资源目录 📚
-
-```text
-Geeker-Admin
-├─ .husky                  # husky 配置文件
-├─ .vscode                 # VSCode 推荐配置
-├─ build                   # Vite 配置项
-├─ public                  # 静态资源文件（该文件夹不会被打包）
-├─ src
-│  ├─ api                  # API 接口管理
-│  ├─ assets               # 静态资源文件
-│  ├─ components           # 全局组件
-│  ├─ config               # 全局配置项
-│  ├─ directives           # 全局指令文件
-│  ├─ enums                # 项目常用枚举
-│  ├─ hooks                # 常用 Hooks 封装
-│  ├─ languages            # 语言国际化 i18n
-│  ├─ layouts              # 框架布局模块
-│  ├─ routers              # 路由管理
-│  ├─ stores               # pinia store
-│  ├─ styles               # 全局样式文件
-│  ├─ typings              # 全局 ts 声明
-│  ├─ utils                # 常用工具库
-│  ├─ views                # 项目所有页面
-│  ├─ App.vue              # 项目主组件
-│  ├─ main.ts              # 项目入口文件
-│  └─ vite-env.d.ts        # 指定 ts 识别 vue
-├─ .editorconfig           # 统一不同编辑器的编码风格
-├─ .env                    # vite 常用配置
-├─ .env.development        # 开发环境配置
-├─ .env.production         # 生产环境配置
-├─ .env.test               # 测试环境配置
-├─ .eslintignore           # 忽略 Eslint 校验
-├─ .eslintrc.cjs           # Eslint 校验配置文件
-├─ .gitignore              # 忽略 git 提交
-├─ .prettierignore         # 忽略 Prettier 格式化
-├─ .prettierrc.cjs         # Prettier 格式化配置
-├─ .stylelintignore        # 忽略 stylelint 格式化
-├─ .stylelintrc.cjs        # stylelint 样式格式化配置
-├─ CHANGELOG.md            # 项目更新日志
-├─ commitlint.config.cjs   # git 提交规范配置
-├─ index.html              # 入口 html
-├─ LICENSE                 # 开源协议文件
-├─ lint-staged.config.cjs  # lint-staged 配置文件
-├─ package-lock.json       # 依赖包包版本锁
-├─ package.json            # 依赖包管理
-├─ postcss.config.cjs      # postcss 配置
-├─ README.md               # README 介绍
-├─ tsconfig.json           # typescript 全局配置
-└─ vite.config.ts          # vite 全局配置文件
-```
-
-### 浏览器支持 🌎
-
-- 本地开发推荐使用 Chrome 最新版浏览器 [Download](https://www.google.com/intl/zh-CN/chrome/)。
-- 生产环境支持现代浏览器，不再支持 IE 浏览器，更多浏览器可以查看 [Can I Use Es Module](https://caniuse.com/?search=ESModule)。
-
-| ![IE](https://i.imgtg.com/2023/04/11/8z7ot.png) | ![Edge](https://i.imgtg.com/2023/04/11/8zr3p.png) | ![Firefox](https://i.imgtg.com/2023/04/11/8zKiU.png) | ![Chrome](https://i.imgtg.com/2023/04/11/8zNrx.png) | ![Safari](https://i.imgtg.com/2023/04/11/8zeGj.png) |
-| :---------------------------------------------: | :-----------------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------: |
-|                   not support                   |                  last 2 versions                  |                   last 2 versions                    |                   last 2 versions                   |                   last 2 versions                   |
-
-### 项目后台接口 🧩
-
-项目后台接口完全采用 Mock 数据，感谢以下 Mock 平台支持：
-
-- FastMock： https://www.fastmock.site
-- EasyMock：https://mock.mengxuegu.com
-
-### 微信交流群 👨‍👨‍👦‍👦
-
-微信一群、二群、三群、四群已满，加作者微信进入五群（支持知识付费）🤪
-
-|                                               微信二维码                                                |
-| :-----------------------------------------------------------------------------------------------------: |
-| <img src="https://pic.ziyuan.wang/user/guest/2024/02/WX20240228-162952@2x_d164375fc0c16.png" width=170> |
-
-### 捐赠 🍵
-
-如果你正在使用这个项目或者喜欢这个项目的，可以通过以下方式支持我：
-
-- Star、Fork、Watch 一键三连 🚀
-- 通过微信、支付宝一次性捐款 ❤
-
-|                                        微信                                        |                                       支付宝                                       |
-| :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
-| <img src="https://i.imgtg.com/2023/01/16/QRzBX.png" alt="Alipay QRcode" width=170> | <img src="https://i.imgtg.com/2023/01/16/QRFZt.png" alt="Wechat QRcode" width=170> |
+[![Star History Chart](https://api.star-history.com/svg?repos=Daymychen/art-design-pro&type=Date)](https://www.star-history.com/#Daymychen/art-design-pro&Date)

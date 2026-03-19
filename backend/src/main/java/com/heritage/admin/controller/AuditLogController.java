@@ -14,7 +14,7 @@ public class AuditLogController {
 
     private final AuditLogService auditLogService;
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listLogs(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

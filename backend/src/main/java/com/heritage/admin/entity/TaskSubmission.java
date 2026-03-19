@@ -26,4 +26,7 @@ public class TaskSubmission {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
+
+    @TableField(exist = false)
+    private String apprenticeName;
 }

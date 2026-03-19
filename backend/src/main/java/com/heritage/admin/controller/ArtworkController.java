@@ -23,7 +23,7 @@ public class ArtworkController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     public Result<?> createArtwork(@Valid @RequestBody ArtworkDTO dto) {
         SysUser currentUser = getCurrentUser();
         artworkService.createArtwork(currentUser.getId(), dto);
@@ -69,13 +69,12 @@ public class ArtworkController {
         return Result.success(artwork);
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listAll(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(required = false) Integer status) {
-        PageResult<Artwork> result = artworkService.listAll(page, size, status);
-        return Result.success(result);
+        return Result.success(artworkService.listAll(page, size, status));
     }
 
     @DeleteMapping("/{id}")

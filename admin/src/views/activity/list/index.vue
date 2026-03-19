@@ -1,274 +1,49 @@
 <template>
-  <div class="card content-box">
-    <div class="table-header" style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-      <div style="display: flex; gap: 10px;">
-        <el-input
-          v-model="queryParams.keyword"
-          placeholder="请输入活动标题"
-          clearable
-          style="width: 250px"
-          @clear="fetchData"
-        />
-        <el-select
-          v-model="queryParams.status"
-          placeholder="请选择状态"
-          clearable
-          style="width: 150px"
-          @change="fetchData"
-        >
-          <el-option label="全部" value="" />
-          <el-option label="报名中" :value="1" />
-          <el-option label="进行中" :value="2" />
-          <el-option label="已结束" :value="3" />
-        </el-select>
-        <el-button type="primary" @click="fetchData">搜索</el-button>
-      </div>
-      <div>
-        <el-button type="primary" @click="handleAdd">新增活动</el-button>
-      </div>
-    </div>
-    <el-table :data="tableData" border stripe v-loading="loading" style="width: 100%">
-      <el-table-column prop="id" label="ID" width="80" />
-      <el-table-column prop="title" label="活动标题" />
-      <el-table-column prop="location" label="地点" />
-      <el-table-column prop="startTime" label="开始时间" width="180" />
-      <el-table-column prop="endTime" label="结束时间" width="180" />
-      <el-table-column prop="maxParticipants" label="最大人数" width="100" />
-      <el-table-column prop="currentParticipants" label="当前人数" width="100" />
-      <el-table-column prop="status" label="状态" width="120">
-        <template #default="{ row }">
-          <el-tag :type="getStatusTagType(row.status)">
-            {{ getStatusLabel(row.status) }}
-          </el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" width="200" fixed="right">
-        <template #default="{ row }">
-          <el-button link type="primary" @click="handleEdit(row)">编辑</el-button>
-          <el-button link type="danger" @click="handleDelete(row)">删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div style="margin-top: 15px; display: flex; justify-content: flex-end;">
-      <el-pagination
-        v-model:current-page="queryParams.pageNum"
-        v-model:page-size="queryParams.pageSize"
-        :page-sizes="[10, 20, 50]"
-        :total="total"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="fetchData"
-        @current-change="fetchData"
-      />
-    </div>
-
-    <!-- 新增/编辑对话框 -->
-    <el-dialog
-      v-model="dialogVisible"
-      :title="dialogTitle"
-      width="700px"
-      @close="resetForm"
-    >
-      <el-form :model="formData" :rules="formRules" ref="formRef" label-width="100px">
-        <el-form-item label="活动标题" prop="title">
-          <el-input v-model="formData.title" placeholder="请输入活动标题" />
-        </el-form-item>
-        <el-form-item label="活动地点" prop="location">
-          <el-input v-model="formData.location" placeholder="请输入活动地点" />
-        </el-form-item>
-        <el-form-item label="开始时间" prop="startTime">
-          <el-date-picker
-            v-model="formData.startTime"
-            type="datetime"
-            placeholder="选择开始时间"
-            style="width: 100%"
-          />
-        </el-form-item>
-        <el-form-item label="结束时间" prop="endTime">
-          <el-date-picker
-            v-model="formData.endTime"
-            type="datetime"
-            placeholder="选择结束时间"
-            style="width: 100%"
-          />
-        </el-form-item>
-        <el-form-item label="最大人数" prop="maxParticipants">
-          <el-input-number v-model="formData.maxParticipants" :min="1" style="width: 100%" />
-        </el-form-item>
-        <el-form-item label="活动描述" prop="description">
-          <el-input
-            v-model="formData.description"
-            type="textarea"
-            :rows="4"
-            placeholder="请输入活动描述"
-          />
-        </el-form-item>
+  <div class="p-4">
+    <el-card shadow="hover">
+      <template #header><div class="flex justify-between items-center"><span class="text-lg font-bold">活动管理</span><el-button type="primary" @click="openDialog()"><el-icon class="mr-1"><Plus /></el-icon>新增活动</el-button></div></template>
+      <el-table :data="tableData" v-loading="loading" stripe border>
+        <el-table-column prop="id" label="ID" width="60" />
+        <el-table-column prop="title" label="活动名称" min-width="200" show-overflow-tooltip />
+        <el-table-column prop="location" label="地点" width="150" show-overflow-tooltip />
+        <el-table-column prop="startTime" label="开始时间" width="170" />
+        <el-table-column prop="endTime" label="结束时间" width="170" />
+        <el-table-column prop="maxParticipants" label="人数上限" width="90" />
+        <el-table-column prop="status" label="状态" width="80">
+          <template #default="{ row }"><el-tag :type="row.status===0?'warning':row.status===1?'success':'info'" size="small">{{ row.status===0?'未开始':row.status===1?'进行中':'已结束' }}</el-tag></template>
+        </el-table-column>
+        <el-table-column label="操作" width="180" fixed="right">
+          <template #default="{ row }">
+            <el-button type="primary" link size="small" @click="openDialog(row)">编辑</el-button>
+            <el-popconfirm title="确定删除？" @confirm="handleDelete(row.id)"><template #reference><el-button type="danger" link size="small">删除</el-button></template></el-popconfirm>
+          </template>
+        </el-table-column>
+      </el-table>
+      <el-pagination class="mt-4 justify-end" v-model:current-page="page" v-model:page-size="pageSize" :total="total" :page-sizes="[10,20]" layout="total,sizes,prev,pager,next" @change="loadData" />
+    </el-card>
+    <el-dialog v-model="dialogVisible" :title="isEdit?'编辑活动':'新增活动'" width="600px" destroy-on-close>
+      <el-form ref="formRef" :model="formData" :rules="rules" label-width="100px">
+        <el-form-item label="活动名称" prop="title"><el-input v-model="formData.title" /></el-form-item>
+        <el-form-item label="地点"><el-input v-model="formData.location" /></el-form-item>
+        <el-form-item label="活动描述"><el-input v-model="formData.description" type="textarea" :rows="3" /></el-form-item>
       </el-form>
-      <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="handleSubmit">确定</el-button>
-      </template>
+      <template #footer><el-button @click="dialogVisible=false">取消</el-button><el-button type="primary" @click="handleSubmit" :loading="submitLoading">确定</el-button></template>
     </el-dialog>
   </div>
 </template>
-
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
-import { ElMessage, ElMessageBox } from "element-plus";
-import type { FormInstance, FormRules } from "element-plus";
-import {
-  getActivityList,
-  addActivity,
-  editActivity,
-  deleteActivity
-} from "@/api/modules/activity";
-
-defineOptions({ name: "ActivityList" });
-
-const loading = ref(false);
-const tableData = ref<any[]>([]);
-const total = ref(0);
-const dialogVisible = ref(false);
-const dialogTitle = ref("新增活动");
-const formRef = ref<FormInstance>();
-
-const queryParams = reactive({
-  pageNum: 1,
-  pageSize: 10,
-  keyword: "",
-  status: ""
-});
-
-const formData = reactive({
-  id: "",
-  title: "",
-  location: "",
-  startTime: "",
-  endTime: "",
-  maxParticipants: 50,
-  description: ""
-});
-
-const formRules: FormRules = {
-  title: [{ required: true, message: "请输入活动标题", trigger: "blur" }],
-  location: [{ required: true, message: "请输入活动地点", trigger: "blur" }],
-  startTime: [{ required: true, message: "请选择开始时间", trigger: "change" }],
-  endTime: [{ required: true, message: "请选择结束时间", trigger: "change" }],
-  maxParticipants: [{ required: true, message: "请输入最大人数", trigger: "blur" }]
-};
-
-const getStatusLabel = (status: number) => {
-  const statusMap: Record<number, string> = {
-    1: "报名中",
-    2: "进行中",
-    3: "已结束"
-  };
-  return statusMap[status] || "未知";
-};
-
-const getStatusTagType = (status: number) => {
-  const typeMap: Record<number, string> = {
-    1: "success",
-    2: "warning",
-    3: "info"
-  };
-  return typeMap[status] || "info";
-};
-
-const fetchData = async () => {
-  loading.value = true;
-  try {
-    const res = await getActivityList(queryParams);
-    if (res.data) {
-      tableData.value = res.data.list || res.data.records || [];
-      total.value = res.data.total || 0;
-    }
-  } catch (error) {
-    console.error("获取活动列表失败:", error);
-  } finally {
-    loading.value = false;
-  }
-};
-
-const handleAdd = () => {
-  dialogTitle.value = "新增活动";
-  resetForm();
-  dialogVisible.value = true;
-};
-
-const handleEdit = (row: any) => {
-  dialogTitle.value = "编辑活动";
-  Object.assign(formData, {
-    id: row.id,
-    title: row.title,
-    location: row.location,
-    startTime: row.startTime,
-    endTime: row.endTime,
-    maxParticipants: row.maxParticipants,
-    description: row.description || ""
-  });
-  dialogVisible.value = true;
-};
-
-const handleDelete = async (row: any) => {
-  try {
-    await ElMessageBox.confirm(`确定要删除活动 "${row.title}" 吗？`, "提示", {
-      confirmButtonText: "确定",
-      cancelButtonText: "取消",
-      type: "warning"
-    });
-    
-    await deleteActivity({ id: [row.id] });
-    ElMessage.success("删除成功");
-    fetchData();
-  } catch (error: any) {
-    if (error !== "cancel") {
-      console.error("删除失败:", error);
-    }
-  }
-};
-
-const resetForm = () => {
-  Object.assign(formData, {
-    id: "",
-    title: "",
-    location: "",
-    startTime: "",
-    endTime: "",
-    maxParticipants: 50,
-    description: ""
-  });
-  formRef.value?.clearValidate();
-};
-
-const handleSubmit = async () => {
-  if (!formRef.value) return;
-  
-  await formRef.value.validate(async (valid) => {
-    if (valid) {
-      try {
-        if (formData.id) {
-          await editActivity(formData);
-          ElMessage.success("编辑成功");
-        } else {
-          await addActivity(formData);
-          ElMessage.success("新增成功");
-        }
-        dialogVisible.value = false;
-        fetchData();
-      } catch (error) {
-        console.error("操作失败:", error);
-      }
-    }
-  });
-};
-
-onMounted(() => {
-  fetchData();
-});
+import { ref, reactive, onMounted } from 'vue'
+import { ElMessage, type FormInstance } from 'element-plus'
+import { Plus } from '@element-plus/icons-vue'
+import { getActivityList, createActivity, updateActivity, deleteActivity } from '@/api/activity'
+defineOptions({ name: 'ActivityList' })
+const loading = ref(false); const submitLoading = ref(false); const tableData = ref<any[]>([]); const page = ref(1); const pageSize = ref(10); const total = ref(0)
+const dialogVisible = ref(false); const isEdit = ref(false); const editId = ref(0); const formRef = ref<FormInstance>()
+const formData = reactive({ title: '', location: '', description: '' })
+const rules = { title: [{ required: true, message: '请输入活动名称', trigger: 'blur' }] }
+const loadData = async () => { loading.value = true; try { const res = await getActivityList({ page: page.value, size: pageSize.value }); tableData.value = res?.records || (Array.isArray(res) ? res : []); total.value = res?.total || tableData.value.length } catch(e){} finally { loading.value = false } }
+const openDialog = (row?: any) => { isEdit.value = !!row; editId.value = row?.id || 0; dialogVisible.value = true; if(row) Object.assign(formData, { title:row.title, location:row.location, description:row.description }); else Object.assign(formData, { title:'', location:'', description:'' }) }
+const handleSubmit = async () => { if(!formRef.value) return; await formRef.value.validate(); submitLoading.value = true; try { if(isEdit.value) await updateActivity(editId.value, formData); else await createActivity(formData); ElMessage.success(isEdit.value?'更新成功':'创建成功'); dialogVisible.value = false; loadData() } catch(e){} finally { submitLoading.value = false } }
+const handleDelete = async (id: number) => { try { await deleteActivity(id); ElMessage.success('删除成功'); loadData() } catch(e){} }
+onMounted(() => loadData())
 </script>
-
-<style scoped lang="scss">
-.content-box {
-  padding: 20px;
-}
-</style>

@@ -10,6 +10,6 @@ import java.util.List;
 public interface TaskSubmissionService extends IService<TaskSubmission> {
     void submitTask(Long apprenticeId, TaskSubmissionDTO dto);
     void reviewSubmission(Long submissionId, Long masterId, SubmissionReviewDTO dto);
-    List<TaskSubmission> getByTaskId(Long taskId);
+    List<TaskSubmission> getByTaskId(Long taskId, Long userId);
     TaskSubmission getByTaskAndApprentice(Long taskId, Long apprenticeId);
 }

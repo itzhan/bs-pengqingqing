@@ -26,7 +26,7 @@ public class TaskSubmissionController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("提交学习成果")
     public Result<?> submit(@Valid @RequestBody TaskSubmissionDTO dto) {
         SysUser currentUser = getCurrentUser();
@@ -36,7 +36,8 @@ public class TaskSubmissionController {
 
     @GetMapping("/task/{taskId}")
     public Result<?> getSubmissionsByTask(@PathVariable Long taskId) {
-        List<TaskSubmission> result = submissionService.getByTaskId(taskId);
+        SysUser currentUser = getCurrentUser();
+        List<TaskSubmission> result = submissionService.getByTaskId(taskId, currentUser.getId());
         return Result.success(result);
     }
 

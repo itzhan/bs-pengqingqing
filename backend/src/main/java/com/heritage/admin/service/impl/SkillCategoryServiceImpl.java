@@ -30,9 +30,17 @@ public class SkillCategoryServiceImpl extends ServiceImpl<SkillCategoryMapper, S
     @Override
     public List<SkillCategoryVO> listTree() {
         List<SkillCategory> all = listAll();
+        // 建立 id -> name 映射
+        java.util.Map<Long, String> idNameMap = all.stream()
+                .collect(Collectors.toMap(SkillCategory::getId, SkillCategory::getName));
+
         List<SkillCategoryVO> voList = all.stream().map(cat -> {
             SkillCategoryVO vo = new SkillCategoryVO();
             BeanUtils.copyProperties(cat, vo);
+            // 填充父级名称
+            if (cat.getParentId() != null && cat.getParentId() > 0) {
+                vo.setParentName(idNameMap.getOrDefault(cat.getParentId(), "未知"));
+            }
             return vo;
         }).collect(Collectors.toList());
 

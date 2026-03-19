@@ -19,7 +19,7 @@ public class HeritageProjectController {
 
     private final HeritageProjectService projectService;
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listProjects(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -42,7 +42,7 @@ public class HeritageProjectController {
         return Result.success(project);
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("创建非遗项目")
     public Result<?> createProject(@Valid @RequestBody HeritageProjectDTO dto) {
         projectService.createProject(dto);

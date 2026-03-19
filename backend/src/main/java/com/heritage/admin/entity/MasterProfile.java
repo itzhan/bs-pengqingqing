@@ -28,4 +28,16 @@ public class MasterProfile {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
+
+    @TableField(exist = false)
+    private String realName;
+
+    @TableField(exist = false)
+    private String avatar;
+
+    @TableField(exist = false)
+    private String projectName;
+
+    @TableField(exist = false)
+    private String skillCategoryName;
 }

@@ -7,16 +7,22 @@ import com.heritage.admin.common.BusinessException;
 import com.heritage.admin.common.PageResult;
 import com.heritage.admin.dto.HeritageProjectDTO;
 import com.heritage.admin.entity.HeritageProject;
+import com.heritage.admin.entity.SkillCategory;
 import com.heritage.admin.mapper.HeritageProjectMapper;
+import com.heritage.admin.mapper.SkillCategoryMapper;
 import com.heritage.admin.service.HeritageProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class HeritageProjectServiceImpl extends ServiceImpl<HeritageProjectMapper, HeritageProject> implements HeritageProjectService {
+    private final SkillCategoryMapper skillCategoryMapper;
 
     @Override
     public PageResult<HeritageProject> listProjects(int page, int size, String keyword, Long categoryId, String level) {
@@ -35,14 +41,17 @@ public class HeritageProjectServiceImpl extends ServiceImpl<HeritageProjectMappe
 
         wrapper.orderByDesc(HeritageProject::getCreatedAt);
         Page<HeritageProject> result = page(pageParam, wrapper);
+        enrichProjects(result.getRecords());
         return new PageResult<>(result.getRecords(), result.getTotal(), result.getCurrent(), result.getSize());
     }
 
     @Override
     public List<HeritageProject> listAll() {
-        return list(new LambdaQueryWrapper<HeritageProject>()
+        List<HeritageProject> projects = list(new LambdaQueryWrapper<HeritageProject>()
                 .eq(HeritageProject::getStatus, 1)
                 .orderByDesc(HeritageProject::getCreatedAt));
+        enrichProjects(projects);
+        return projects;
     }
 
     @Override
@@ -81,5 +90,29 @@ public class HeritageProjectServiceImpl extends ServiceImpl<HeritageProjectMappe
             throw new BusinessException("项目不存在");
         }
         removeById(id);
+    }
+
+    private void enrichProjects(List<HeritageProject> projects) {
+        if (projects == null || projects.isEmpty()) {
+            return;
+        }
+
+        List<Long> categoryIds = projects.stream()
+                .map(HeritageProject::getCategoryId)
+                .filter(id -> id != null)
+                .distinct()
+                .collect(Collectors.toList());
+        Map<Long, SkillCategory> categoryMap = Collections.emptyMap();
+        if (!categoryIds.isEmpty()) {
+            categoryMap = skillCategoryMapper.selectBatchIds(categoryIds).stream()
+                    .collect(Collectors.toMap(SkillCategory::getId, category -> category));
+        }
+
+        for (HeritageProject project : projects) {
+            SkillCategory category = categoryMap.get(project.getCategoryId());
+            if (category != null) {
+                project.setCategoryName(category.getName());
+            }
+        }
     }
 }

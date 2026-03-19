@@ -1,254 +1,650 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
 
-## [1.2.0](https://github.com/HalseySpicy/Geeker-Admin/compare/v1.1.0...v1.2.0) (2023-09-15)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Released]
 
-### Features
+### v3.0.1 - 2025-11-15
 
-* 🚀 update and optimize project content ([17bc017](https://github.com/HalseySpicy/Geeker-Admin/commit/17bc017c5abbd2c87813d6c6f9d587ddf9d57da7))
-* 🚀 upgrade plugins and add tab functionality ([f21a41d](https://github.com/HalseySpicy/Geeker-Admin/commit/f21a41d8df44efe5216dec39bf4abf0ea86a7781))
+#### Fixed
 
-## [1.1.0](https://github.com/HalseySpicy/Geeker-Admin/compare/v1.0.0...v1.1.0) (2023-07-09)
+- Fixed repeated API calls issue when accessing non-existent interfaces during route registration
+- Fixed one-click cleanup script build failure issue
 
-### Features
+#### Optimized
 
-- 🚀 add proTable instance type ([8262f04](https://github.com/HalseySpicy/Geeker-Admin/commit/8262f045734d055148720738a80fee0e0c779ceb))
-- 🚀 optimize code and add VitePWA ([523f676](https://github.com/HalseySpicy/Geeker-Admin/commit/523f676feee5105eae15d05b57063227be26d3df))
-- 🚀 optimize code and update plugins ([5cff3c7](https://github.com/HalseySpicy/Geeker-Admin/commit/5cff3c7e50331ede07d57613cc49658904e7cf1a))
-- 🚀 optimize irregular code ([d406ef2](https://github.com/HalseySpicy/Geeker-Admin/commit/d406ef2bb5e0d0522f5e0ce38c3b9d0aa47c7cd2))
-- 🚀 proTable radio selection example ([f58291f](https://github.com/HalseySpicy/Geeker-Admin/commit/f58291f96468b816607c31df87326ebd7d0a5c5a))
-- 🚀 proTable search component custom rendering ([#189](https://github.com/HalseySpicy/Geeker-Admin/issues/189)) ([89f03db](https://github.com/HalseySpicy/Geeker-Admin/commit/89f03db2db41160b9ac5398d64712fabff399c4c))
-- 🚀 proTable supports static table data ([9a3e85d](https://github.com/HalseySpicy/Geeker-Admin/commit/9a3e85d21d6c8872bbc915c42d48eb8658a1db63))
-- 🚀 update Gitee address ([0608be9](https://github.com/HalseySpicy/Geeker-Admin/commit/0608be9ba6a9f01f73ed67671d340cf0c1d99261))
-- 🚀 update stylelint configuration ([d62aae8](https://github.com/HalseySpicy/Geeker-Admin/commit/d62aae868e7d6aad87f0ba8706ab9744d5da04dd))
-- 🚀 update theme, modify bugs ([7a3a7a3](https://github.com/HalseySpicy/Geeker-Admin/commit/7a3a7a3d665c0356c0272947292de750dd0be8d8))
+- Enhanced route configuration validation mechanism, automatically detects and prompts path configuration errors for non-first-level menus
+- Optimized top progress bar ghosting issue
+- Optimized vite pre-build configuration
+- Unified border radius and border consistency
+- Redesigned lock screen page, improved visual experience
+- Optimized visual experience issue caused by logout menu disappearing prematurely
 
-### Bug Fixes
+#### Added
 
-- 🧩 fix eslint error ([a980a1a](https://github.com/HalseySpicy/Geeker-Admin/commit/a980a1aa7808895af46c85e0e26a53f66d1119fa))
+- ArtForm and ArtSearchBar component labels support custom render functions, enabling complex labels with tooltips
+- Menu management form key fields added Tooltip hints, lowering user configuration threshold
+- Iconify added offline icon loading mode
+- Logout added redirect property for redirecting to corresponding page after re-login
+- Logout and re-entry preserves user tabs, identified by userId
+- Dual menu added collapse button
+- Enhanced menu icons
+- Multi-tab pages added icon display
+- Added WebSocket connection example
+- Lock screen password error triggers input box shake animation
 
-## [1.0.0](https://github.com/HalseySpicy/Geeker-Admin/compare/v0.0.7...v1.0.0) (2023-04-15)
+#### ⚠️ Important Notice
 
-### Features
+> This version requires re-login
 
-- 🚀 升级依赖插件 && 新增树型 ProTbale 示例(更多查看详情) ([ed0ea75](https://github.com/HalseySpicy/Geeker-Admin/commit/ed0ea757555f047f6890632e598ee3293d3598cd))
-- 🚀 升级依赖插件 && 修复 bug(查看详情) ([4febadc](https://github.com/HalseySpicy/Geeker-Admin/commit/4febadc10dd794ec8ea1c7864a3771b1b477f743))
-- 🚀 新增路由白名单访问控制 ([97dc264](https://github.com/HalseySpicy/Geeker-Admin/commit/97dc26484c6eead2ae4c8c79d50b550f24f19a02))
-- 🚀 优化 ProTable && 面包屑导航 ([905d7f1](https://github.com/HalseySpicy/Geeker-Admin/commit/905d7f1fd2b18d9650e6ba7d439dfdcf50363d11))
-- 🚀 优化代码 ([cd333df](https://github.com/HalseySpicy/Geeker-Admin/commit/cd333dfe5de2aa7fa415326e6a06b83d3bd260d5))
-- 🚀 优化代码和样式细节 ([5b4b926](https://github.com/HalseySpicy/Geeker-Admin/commit/5b4b9266de4f420f32fca70dadb76242d129e604))
-- 🚀 优化代码和样式细节 ([756094c](https://github.com/HalseySpicy/Geeker-Admin/commit/756094c402e14841c07cd6062b701929f7f31737))
-- 🚀 优化代码逻辑 && 更新微信群二维码 ([629e824](https://github.com/HalseySpicy/Geeker-Admin/commit/629e8243466fda5da9f0ec781aa0b584e49f4501))
-- 🚀 优化代码细节问题 ([a6a6ced](https://github.com/HalseySpicy/Geeker-Admin/commit/a6a6cedeb40f2f7901f0dcd0ec7f1c283a491c61))
-- 🚀 优化样式、代码细节 ([1b02f45](https://github.com/HalseySpicy/Geeker-Admin/commit/1b02f457162267b090ad946e0bad91e5d0dd14b1))
-- 🚀 allow nested tree enum data ([c2fa2be](https://github.com/HalseySpicy/Geeker-Admin/commit/c2fa2be54a6af0309ba45bd4ca68170c66edc357))
-- 🚀 refactoring project configuration ([7ede988](https://github.com/HalseySpicy/Geeker-Admin/commit/7ede988bae3ad0b33d9e5ac1ea6145c4d7aa89e6))
-- **ProTable:** 🚀 插槽引入 ElTable 的 scope，可获取$index 等 ([4cb7dba](https://github.com/HalseySpicy/Geeker-Admin/commit/4cb7dba40c10e693e324b7c647aa65917aeb0b02))
+---
 
-### Bug Fixes
+### v3.0.0 - 2025-11-09 🎉
 
-- 🧩 修复 ImportExcel 组件 bug ([ab7e9dd](https://github.com/HalseySpicy/Geeker-Admin/commit/ab7e9dde400aa80ec2e9fa58d9f2168fc3d14f18))
-- 🧩 修复 ImportExcel 组件 bug ([803ba58](https://github.com/HalseySpicy/Geeker-Admin/commit/803ba58a2c3fae7f6d8783ca534e2b41c987f027))
-- 🧩 修复 ProTable 组件打印功能 bug ([a88b7df](https://github.com/HalseySpicy/Geeker-Admin/commit/a88b7df4623e30459ef3c92196b720efcb200f2f))
-- 🧩 修复 TreeFilter 组件默认值 bug ([8e515f0](https://github.com/HalseySpicy/Geeker-Admin/commit/8e515f0d4058f573cbd53281ef68aec38b8dacb9))
-- 🧩 修复 TreeFilter 组件默认值 bug ([f23a94d](https://github.com/HalseySpicy/Geeker-Admin/commit/f23a94d6edf442babdc4cd5a52ea63ebbbcac44f))
-- 🧩 修复 useDebounceFn 错误使用 ([99d4278](https://github.com/HalseySpicy/Geeker-Admin/commit/99d4278a29b7fa970caba55f43134cebd1d3bec6))
-- 🧩 修复多图片上传预览初始化异常 ([d1a917f](https://github.com/HalseySpicy/Geeker-Admin/commit/d1a917f10326b7742b4445c495de12603df658c1))
-- 🧩 修复分栏布局路径匹配 bug ([b06bd12](https://github.com/HalseySpicy/Geeker-Admin/commit/b06bd123fa6af0dcb7d5cc9bc9215f13b91ace5f))
-- 🧩 修复横向布局下最大化失效 ([e416ddb](https://github.com/HalseySpicy/Geeker-Admin/commit/e416ddb732ae336ca4e7e43ebdeb89b24085d1b1))
-- 🧩 修复路由重置 bug ([52b7e66](https://github.com/HalseySpicy/Geeker-Admin/commit/52b7e66febf1db9cd3325eb0e1e45213ff1528c2))
-- 🧩 修复弱类型检查错误 ([b32310e](https://github.com/HalseySpicy/Geeker-Admin/commit/b32310ed2f546e3efa918d5f7eee2c3868a98cb7))
+#### Refactored
 
-### 0.0.7 (2022-12-28)
+- Style system refactored: Sass fully migrated to Tailwind CSS, improving development efficiency and style consistency
+- Icon solution upgraded: Iconfont replaced with Iconify, supporting richer icon libraries and on-demand loading
+- Route registration refactored: Comprehensive refactoring of route registration system with object-oriented design, improving code maintainability, testability and extensibility
+- Refactored ArtTextScroll component, improving performance and maintainability
+- Refactored color system, unified UI visual specifications, improving interface consistency
 
-### Features
+#### Optimized
 
-- 🚀 二次封装 wangEditor 富文本编辑器(50%) ([4f8e266](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4f8e266b7dd25a7df18d302e88e14454bfa3816b))
-- 🚀 更新插件、优化代码(请查看详情) ([dac6dec](https://gitee.com/HalseySpicy/Geeker-Admin/commit/dac6dec75466c19731ad7cf083f8c39940342140))
-- 🚀 更新微信群二维码 ([7e890d0](https://gitee.com/HalseySpicy/Geeker-Admin/commit/7e890d0afe0a11170d73e3c2c4ef04d37a582e94))
-- 🚀 请求全局 loading 更改为可配置 ([a75d62f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a75d62f627195ac420cf24ad7f51245b2e5bf04e))
-- 🚀 升级 element-plus 到 2.25 ([e98c035](https://gitee.com/HalseySpicy/Geeker-Admin/commit/e98c035caa6d1ab04319673e0db65837c6887126))
-- 🚀 升级 vite、vue 版本 && 优化分栏布局样式 ([b2b1b59](https://gitee.com/HalseySpicy/Geeker-Admin/commit/b2b1b599bc1fa0f1c64c5c58fb31d3719f415301))
-- 🚀 使用属性透传重构 ProTable 组件 ([a428e89](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a428e89a3784c826eceaaee548b97975afbe1d45))
-- 🚀 添加 wangEditor 组件 ([d6d2fa7](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d6d2fa7d27887bb4a9e40e9d7037d4621812e16a))
-- 🚀 完成 wangEditor 富文本二次封装 ([7362bfb](https://gitee.com/HalseySpicy/Geeker-Admin/commit/7362bfbff19224045e3bb20fa939a78c556cc805))
-- 🚀 完善按钮、菜单权限示例 ([6793f0c](https://gitee.com/HalseySpicy/Geeker-Admin/commit/6793f0cd7372b8a080f6d2649b05cdd0c62bd853))
-- 🚀 新增 主题色、灰色模式、色弱模式 配置 ([7821157](https://gitee.com/HalseySpicy/Geeker-Admin/commit/7821157059ed9c21d2844f75049f8fa999b19944))
-- 🚀 新增 pro-form ([3ab5a5b](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3ab5a5b4f63fca227944ab6cc7928f6bf1f88ed4))
-- 🚀 新增 protable 打印、列对齐方式功能 ([c22879e](https://gitee.com/HalseySpicy/Geeker-Admin/commit/c22879e7e80ff9ef662c39daa25b11f5f17d17ca))
-- 🚀 新增 protbale 功能, 请查看详情 ([17f2bcd](https://gitee.com/HalseySpicy/Geeker-Admin/commit/17f2bcd67362365579ed8a572a3a9d17368ac64e))
-- 🚀 新增 SVG Icons ([977602c](https://gitee.com/HalseySpicy/Geeker-Admin/commit/977602c30b8997cb51426fe9498392edc249561d))
-- 🚀 新增 treeFilter 组件标题属性 ([20c755f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/20c755f59f3ae2b0380e6549bb56bb22317d750e))
-- 🚀 新增 treeFilter data 参数 ([4280766](https://gitee.com/HalseySpicy/Geeker-Admin/commit/428076635d7a0e9f80109274d9523cf91aa5a10c))
-- 🚀 新增暗黑模式 ([215e499](https://gitee.com/HalseySpicy/Geeker-Admin/commit/215e499634b516234e653eac27a611d5f51ea6da))
-- 🚀 新增菜单搜索功能 ([4aa0eef](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4aa0eefaf427a2aa1aebd2b78dc049ffa776e838))
-- 🚀 新增动态路由 ([551fefc](https://gitee.com/HalseySpicy/Geeker-Admin/commit/551fefc2e66b067d9e64d3b0cfbf47dfa1057d98))
-- 🚀 新增分栏布局 ([de37143](https://gitee.com/HalseySpicy/Geeker-Admin/commit/de37143e93c0cc5be2ff52466dce344ab9270f0d))
-- 🚀 新增功能 && 修复 bug(查看详情) ([1ab183f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/1ab183f1551cb8beb77243c2953b0119409dd6a5))
-- 🚀 新增功能 && 修复 bug(查看详情) ([4c0bc5f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4c0bc5fd3c111e1cac636cad104c83ffb1168679))
-- 🚀 新增功能(查看详情) ([cbd8dc2](https://gitee.com/HalseySpicy/Geeker-Admin/commit/cbd8dc2387576f525c0e49f81d540fbad3cb5e81))
-- 🚀 新增横向、纵向、经典布局切换 ([1046de4](https://gitee.com/HalseySpicy/Geeker-Admin/commit/1046de4c7d5f805b10c5cea5325b063e3d6dd84f))
-- 🚀 新增界面配置功能 ([39ffc5e](https://gitee.com/HalseySpicy/Geeker-Admin/commit/39ffc5e9a77da3294055f23f8c87a4a44f3622f7))
-- 🚀 新增路由相关功能 ([9679eed](https://gitee.com/HalseySpicy/Geeker-Admin/commit/9679eed1edd0c1f08c17465f590d4ca0365985ee)), closes [#71](https://gitee.com/HalseySpicy/Geeker-Admin/issues/71) [#72](https://gitee.com/HalseySpicy/Geeker-Admin/issues/72) [#49](https://gitee.com/HalseySpicy/Geeker-Admin/issues/49)
-- 🚀 新增请求示例，参见 loginApi ([d49b227](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d49b227762ae48c3ca08f0dec02a3667daac8532))
-- 🚀 新增图标选择组件 ([ce5e165](https://gitee.com/HalseySpicy/Geeker-Admin/commit/ce5e165aed842074a9f7ac66ea97290710b541ee))
-- 🚀 新增图片上传组件 ([c50c421](https://gitee.com/HalseySpicy/Geeker-Admin/commit/c50c421bc3c5f7af68184cda88262c6fb1bd07e0))
-- 🚀 新增图片上传组件属性 ([d7670ed](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d7670ed94608c5410f3102d7b9427d8d856204b1))
-- 🚀 新增系统管理模块 ([23748e1](https://gitee.com/HalseySpicy/Geeker-Admin/commit/23748e185e80e3b774b42114427934228a57d3aa))
-- 🚀 新增消息通知 ([66836b6](https://gitee.com/HalseySpicy/Geeker-Admin/commit/66836b69781ccc55402a3887d091149885864442))
-- 🚀 新增页面刷新功能 ([5223a41](https://gitee.com/HalseySpicy/Geeker-Admin/commit/5223a416d17568d5b2cae7b16b637e0f39134223))
-- 🚀 新增引导页 ([4fb6fb3](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4fb6fb3a3eb34f82576e2378c311ff580f65226d))
-- 🚀 新增组件参数配置文档 ([0e11fc5](https://gitee.com/HalseySpicy/Geeker-Admin/commit/0e11fc59175d5d74730c3cb1fa2579effcca6e48))
-- 🚀 修改 keepAlive 逻辑 ([168ca13](https://gitee.com/HalseySpicy/Geeker-Admin/commit/168ca13e796c8cc366caa3d6e05090acdaefef75))
-- 🚀 修改 pinia 持久化插件 ([a7691ae](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a7691aea614a035c4d381838149e08ad8477e49f))
-- 🚀 优化代码注释 && 升级 element 到 2.2.6 ([b84512b](https://gitee.com/HalseySpicy/Geeker-Admin/commit/b84512b3b102b00faa2f9241a32f5fbe27da4307))
-- 🚀 优化注释 && 代码细节问题 ([9d0ffa5](https://gitee.com/HalseySpicy/Geeker-Admin/commit/9d0ffa5ddecc4c73bec51208b05a6d44b1523b1f))
-- 🚀 预定义主题颜色 ([8219178](https://gitee.com/HalseySpicy/Geeker-Admin/commit/82191789bcf6d21c623aa61c5a64e502cea44c2c))
-- 🚀 增加 SearchForm 属性透传 ([eadb89b](https://gitee.com/HalseySpicy/Geeker-Admin/commit/eadb89b687596980a82401f44c53430081078d04))
-- 🚀 增加表格 treeFilter、更新整体布局样式 ([719b78f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/719b78f317589b983bc4b852b3bfd63a60d42a46))
-- 🚀 增加布局方式切换，样式已完成 ([5745b93](https://gitee.com/HalseySpicy/Geeker-Admin/commit/5745b93a6cc00519c1a02977b8c0437502d867e6))
-- 🚀 增加分类筛选器 ([c95a1c0](https://gitee.com/HalseySpicy/Geeker-Admin/commit/c95a1c054ee9eacae470bcaae7574d5c989b86a2))
-- 🚀 增加全局错误拦截 && 修改细节问题 请查看详情 ([0496184](https://gitee.com/HalseySpicy/Geeker-Admin/commit/04961847eb7df004d1e9f562e78ea3d5f851ea49))
+- Build optimization: Complete package size reduced by 1.3 MB, significantly improving loading performance
+- Architecture optimization: Optimized directory structure with clearer responsibility division, reducing user learning curve and onboarding difficulty
+- Comment optimization: Unified module comment standards, improved component descriptions, feature explanations and usage examples, reducing user understanding cost and onboarding difficulty
+- Performance improvement: Optimized core code logic, improving system runtime efficiency
+- Menu optimization: Refined menu styles, optimized interaction experience and visual presentation
+- Responsive optimization: Optimized ArtForm and ArtSearchBar grid layout, adapting to various screen sizes
+- Configuration management optimization: Added setting.ts configuration file, supporting one-click copy and reset of system default settings
 
-### Bug Fixes
+#### Fixed
 
-- 🧩 菜单搜索过滤掉 isHide 为 true 的菜单 ([c6bab35](https://gitee.com/HalseySpicy/Geeker-Admin/commit/c6bab356f0cde7e3dc6f69dfac115239c2453776))
-- 🧩 解决 useTable 查询参数 bug ([a86e408](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a86e4089b6da8ab6a55bc84e069d665c06471676))
-- 🧩 去除登陆页默认账号 ([3dda3fe](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3dda3fee3fef38fdafcfdf3b1bf16e73033c6fe0))
-- 🧩 删除 protable 组件 image 配置属性 ([d699fe7](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d699fe7bd55eaaccfad9b94105c1b43ae64d1c34))
-- 🧩 修复 国际化 产生的 bug ([ec4f74a](https://gitee.com/HalseySpicy/Geeker-Admin/commit/ec4f74ae654e7287fc08bb31fa3ee3d2c76164eb))
-- 🧩 修复 axios 请求超时未拦截错误 ([856468e](https://gitee.com/HalseySpicy/Geeker-Admin/commit/856468e84f8356d35c25097f3115dfe3d496914c))
-- 🧩 修复 bug ([3714abd](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3714abdc4826034791ccb3fc8249d946ec3a4e16))
-- 🧩 修复 Pro-Tabel 列设置 bug ([a3b86a0](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a3b86a06a6d9cd4b6f7ac6e108727a0b4852e9a0))
-- 🧩 修复 pro-table 格式报错问题 ([2ef11fd](https://gitee.com/HalseySpicy/Geeker-Admin/commit/2ef11fda6d373c3214df801ae789cafc1a033dcb))
-- 🧩 修复布局样式 bug ([2f1cd64](https://gitee.com/HalseySpicy/Geeker-Admin/commit/2f1cd6442f359909301e3d95b0ed4dc9d2dbe7c6))
-- 🧩 修复打包错误 ([243ebfc](https://gitee.com/HalseySpicy/Geeker-Admin/commit/243ebfc5280ddc013056c6708b44df35fe18f613))
-- 🧩 修复打包失败 ([31698fe](https://gitee.com/HalseySpicy/Geeker-Admin/commit/31698fea6478d60343a9ad49ae0fc6db7a42c184))
-- 🧩 修复打包失败问题 ([1778651](https://gitee.com/HalseySpicy/Geeker-Admin/commit/1778651781a1bb8bfe4ea61dafb9b48773fef5d7))
-- 🧩 修复分栏布局 bug ([113274a](https://gitee.com/HalseySpicy/Geeker-Admin/commit/113274a87e2dacf694648f3a304c7ac37e2262d0))
-- 🧩 修复经典布局展示 bug ([b95e237](https://gitee.com/HalseySpicy/Geeker-Admin/commit/b95e2376d06c6a6a35f72743e3fe8c1569fda008))
-- 🧩 修复路由跳转两次不能携带参数问题 ([8b583f3](https://gitee.com/HalseySpicy/Geeker-Admin/commit/8b583f3d5f05b77ec2a35082557bae431441a586))
-- 🧩 修复请求 header 参数丢失 bug ([3598dbc](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3598dbc2a83aaacf9dada4e2c38a3ca27cbe4cfd))
-- 🧩 修复上传组件细节问题 ([8528358](https://gitee.com/HalseySpicy/Geeker-Admin/commit/8528358925ea809cf52f55015355345e87607351))
-- 🧩 修复 BUG ([4bf2988](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4bf29881dd41fad256f1beb5affcd5ba6599e17d))
-- 🧩 修复 BUG ([c93aaf7](https://gitee.com/HalseySpicy/Geeker-Admin/commit/c93aaf700112decd158e9a5a9c1f83eff1773e91))
-- 🧩 修复 loading 请求 bug ([a3270ec](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a3270ecfa2e7c2484729ae6fd599febcc4f7be6b))
-- 🧩 修复 vercel 打包失败 ([e63dee1](https://gitee.com/HalseySpicy/Geeker-Admin/commit/e63dee1f9653f4f95d0330275c5f5e8b530564c9))
-- 🧩 修改 Pro-Table 表头渲染方式 ([aa57294](https://gitee.com/HalseySpicy/Geeker-Admin/commit/aa5729489942eaa6dca9928b70153af2de753a9c))
-- 🧩 修改 useTable 存在的 bug ([5bb55b3](https://gitee.com/HalseySpicy/Geeker-Admin/commit/5bb55b32c0b46bbf55fa0d49efe3a15d0b1673a4))
-- 🧩 修改 useTable 钩子中的 bug ([675aed8](https://gitee.com/HalseySpicy/Geeker-Admin/commit/675aed806e62c236b40bc933402c86085289df4e))
-- 🧩 修改 useTable 携带默认查询参数 bug ([ee585b2](https://gitee.com/HalseySpicy/Geeker-Admin/commit/ee585b29f3129b7143a10947fdd3184b197ad883))
-- 🧩 修改代码细节 && 优化注释 ([d86cb1f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d86cb1feb32e11a29e1c2bee54ea788c6c828d75))
-- 🧩 修改当菜单设置 isHide=true 时面包屑报错 ([66885c5](https://gitee.com/HalseySpicy/Geeker-Admin/commit/66885c5cc15c10ccadcd49a7bee27a821663e8a7))
-- 🧩 修改文件导出失败 bug ([208e720](https://gitee.com/HalseySpicy/Geeker-Admin/commit/208e720688969d2bc0fa0a6cc2bae3e3b991c806))
-- 🧩 修改 BUG ([540048a](https://gitee.com/HalseySpicy/Geeker-Admin/commit/540048a09be9b0df5443e275f38f43c80dcde51f))
-- 🧩 fix use pinia bug ([609aa69](https://gitee.com/HalseySpicy/Geeker-Admin/commit/609aa69aa9b3e0bb4e667ee7f76ab44051c2d2e8))
-- 修复登录后白屏 ([f986c5c](https://gitee.com/HalseySpicy/Geeker-Admin/commit/f986c5c44fc1df8d5c6a90e90239c06928e2f4a1))
-- **el-table:** 🧩 修复 el-table 在 safari 浏览器错乱 ([b776a48](https://gitee.com/HalseySpicy/Geeker-Admin/commit/b776a483636547c7cee723846ec33b2842550d13))
+- Fixed ArtForm and ArtSearchBar custom component rendering issues
 
-### 0.0.6 (2022-08-22)
+#### Added
 
-### Features
+- ArtForm and ArtSearchBar added render property, supporting custom component rendering
+- Festival feature enhancement: Fireworks configuration supports cross-date range settings and custom playback counts
 
-- 🚀 二次封装 wangEditor 富文本编辑器(50%) ([4f8e266](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4f8e266b7dd25a7df18d302e88e14454bfa3816b))
-- 🚀 请求全局 loading 更改为可配置 ([a75d62f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a75d62f627195ac420cf24ad7f51245b2e5bf04e))
-- 🚀 升级 element-plus 到 2.25 ([e98c035](https://gitee.com/HalseySpicy/Geeker-Admin/commit/e98c035caa6d1ab04319673e0db65837c6887126))
-- 🚀 添加 wangEditor 组件 ([d6d2fa7](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d6d2fa7d27887bb4a9e40e9d7037d4621812e16a))
-- 🚀 完成 wangEditor 富文本二次封装 ([7362bfb](https://gitee.com/HalseySpicy/Geeker-Admin/commit/7362bfbff19224045e3bb20fa939a78c556cc805))
-- 🚀 新增 主题色、灰色模式、色弱模式 配置 ([7821157](https://gitee.com/HalseySpicy/Geeker-Admin/commit/7821157059ed9c21d2844f75049f8fa999b19944))
-- 🚀 新增 pro-form ([3ab5a5b](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3ab5a5b4f63fca227944ab6cc7928f6bf1f88ed4))
-- 🚀 新增 protbale 功能, 请查看详情 ([17f2bcd](https://gitee.com/HalseySpicy/Geeker-Admin/commit/17f2bcd67362365579ed8a572a3a9d17368ac64e))
-- 🚀 新增 SVG Icons ([977602c](https://gitee.com/HalseySpicy/Geeker-Admin/commit/977602c30b8997cb51426fe9498392edc249561d))
-- 🚀 新增 treeFilter data 参数 ([4280766](https://gitee.com/HalseySpicy/Geeker-Admin/commit/428076635d7a0e9f80109274d9523cf91aa5a10c))
-- 🚀 新增暗黑模式 ([215e499](https://gitee.com/HalseySpicy/Geeker-Admin/commit/215e499634b516234e653eac27a611d5f51ea6da))
-- 🚀 新增菜单搜索功能 ([4aa0eef](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4aa0eefaf427a2aa1aebd2b78dc049ffa776e838))
-- 🚀 新增界面配置功能 ([39ffc5e](https://gitee.com/HalseySpicy/Geeker-Admin/commit/39ffc5e9a77da3294055f23f8c87a4a44f3622f7))
-- 🚀 新增请求示例，参见 loginApi ([d49b227](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d49b227762ae48c3ca08f0dec02a3667daac8532))
-- 🚀 新增图标选择组件 ([ce5e165](https://gitee.com/HalseySpicy/Geeker-Admin/commit/ce5e165aed842074a9f7ac66ea97290710b541ee))
-- 🚀 新增图片上传组件 ([c50c421](https://gitee.com/HalseySpicy/Geeker-Admin/commit/c50c421bc3c5f7af68184cda88262c6fb1bd07e0))
-- 🚀 新增图片上传组件属性 ([d7670ed](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d7670ed94608c5410f3102d7b9427d8d856204b1))
-- 🚀 新增引导页 ([4fb6fb3](https://gitee.com/HalseySpicy/Geeker-Admin/commit/4fb6fb3a3eb34f82576e2378c311ff580f65226d))
-- 🚀 新增组件参数配置文档 ([0e11fc5](https://gitee.com/HalseySpicy/Geeker-Admin/commit/0e11fc59175d5d74730c3cb1fa2579effcca6e48))
-- 🚀 修改 pinia 持久化插件 ([a7691ae](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a7691aea614a035c4d381838149e08ad8477e49f))
-- 🚀 优化代码注释 && 升级 element 到 2.2.6 ([b84512b](https://gitee.com/HalseySpicy/Geeker-Admin/commit/b84512b3b102b00faa2f9241a32f5fbe27da4307))
-- 🚀 优化注释 && 代码细节问题 ([9d0ffa5](https://gitee.com/HalseySpicy/Geeker-Admin/commit/9d0ffa5ddecc4c73bec51208b05a6d44b1523b1f))
-- 🚀 预定义主题颜色 ([8219178](https://gitee.com/HalseySpicy/Geeker-Admin/commit/82191789bcf6d21c623aa61c5a64e502cea44c2c))
-- 🚀 增加 SearchForm 属性透传 ([eadb89b](https://gitee.com/HalseySpicy/Geeker-Admin/commit/eadb89b687596980a82401f44c53430081078d04))
-- 🚀 增加表格 treeFilter、更新整体布局样式 ([719b78f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/719b78f317589b983bc4b852b3bfd63a60d42a46))
+#### Upgraded
 
-### Bug Fixes
+- Dependency updates: Upgraded core dependencies to latest stable versions
 
-- 🧩 解决 useTable 查询参数 bug ([a86e408](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a86e4089b6da8ab6a55bc84e069d665c06471676))
-- 🧩 去除登陆页默认账号 ([3dda3fe](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3dda3fee3fef38fdafcfdf3b1bf16e73033c6fe0))
-- 🧩 删除 protable 组件 image 配置属性 ([d699fe7](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d699fe7bd55eaaccfad9b94105c1b43ae64d1c34))
-- 🧩 修复 国际化 产生的 bug ([ec4f74a](https://gitee.com/HalseySpicy/Geeker-Admin/commit/ec4f74ae654e7287fc08bb31fa3ee3d2c76164eb))
-- 🧩 修复 axios 请求超时未拦截错误 ([856468e](https://gitee.com/HalseySpicy/Geeker-Admin/commit/856468e84f8356d35c25097f3115dfe3d496914c))
-- 🧩 修复 Pro-Tabel 列设置 bug ([a3b86a0](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a3b86a06a6d9cd4b6f7ac6e108727a0b4852e9a0))
-- 🧩 修复 pro-table 格式报错问题 ([2ef11fd](https://gitee.com/HalseySpicy/Geeker-Admin/commit/2ef11fda6d373c3214df801ae789cafc1a033dcb))
-- 🧩 修复打包失败问题 ([1778651](https://gitee.com/HalseySpicy/Geeker-Admin/commit/1778651781a1bb8bfe4ea61dafb9b48773fef5d7))
-- 🧩 修复路由跳转两次不能携带参数问题 ([8b583f3](https://gitee.com/HalseySpicy/Geeker-Admin/commit/8b583f3d5f05b77ec2a35082557bae431441a586))
-- 🧩 修复请求 header 参数丢失 bug ([3598dbc](https://gitee.com/HalseySpicy/Geeker-Admin/commit/3598dbc2a83aaacf9dada4e2c38a3ca27cbe4cfd))
-- 🧩 修复上传组件细节问题 ([8528358](https://gitee.com/HalseySpicy/Geeker-Admin/commit/8528358925ea809cf52f55015355345e87607351))
-- 🧩 修复 loading 请求 bug ([a3270ec](https://gitee.com/HalseySpicy/Geeker-Admin/commit/a3270ecfa2e7c2484729ae6fd599febcc4f7be6b))
-- 🧩 修改 Pro-Table 表头渲染方式 ([aa57294](https://gitee.com/HalseySpicy/Geeker-Admin/commit/aa5729489942eaa6dca9928b70153af2de753a9c))
-- 🧩 修改 useTable 存在的 bug ([5bb55b3](https://gitee.com/HalseySpicy/Geeker-Admin/commit/5bb55b32c0b46bbf55fa0d49efe3a15d0b1673a4))
-- 🧩 修改 useTable 钩子中的 bug ([675aed8](https://gitee.com/HalseySpicy/Geeker-Admin/commit/675aed806e62c236b40bc933402c86085289df4e))
-- 🧩 修改 useTable 携带默认查询参数 bug ([ee585b2](https://gitee.com/HalseySpicy/Geeker-Admin/commit/ee585b29f3129b7143a10947fdd3184b197ad883))
-- 🧩 修改代码细节 && 优化注释 ([d86cb1f](https://gitee.com/HalseySpicy/Geeker-Admin/commit/d86cb1feb32e11a29e1c2bee54ea788c6c828d75))
-- 🧩 修改文件导出失败 bug ([208e720](https://gitee.com/HalseySpicy/Geeker-Admin/commit/208e720688969d2bc0fa0a6cc2bae3e3b991c806))
-- 🧩 fix use pinia bug ([609aa69](https://gitee.com/HalseySpicy/Geeker-Admin/commit/609aa69aa9b3e0bb4e667ee7f76ab44051c2d2e8))
-- 修复登录后白屏 ([f986c5c](https://gitee.com/HalseySpicy/Geeker-Admin/commit/f986c5c44fc1df8d5c6a90e90239c06928e2f4a1))
+#### ⚠️ Important Notice
 
-### [0.0.5](https://github.com/HalseySpicy/Geeker-Admin/compare/v0.0.4...v0.0.5) (2022-07-21)
+> This upgrade involves fundamental refactoring of the style system (Sass → Tailwind CSS) and icon library (Iconfont → Iconify), which is a breaking change. It is recommended to use v3.0 for new projects. Upgrading existing projects is not recommended.
 
-### Features
+---
 
-- 🚀 新增请求示例，参见 loginApi ([d49b227](https://github.com/HalseySpicy/Geeker-Admin/commit/d49b227762ae48c3ca08f0dec02a3667daac8532))
+### v2.6.1 - 2025-10-19
 
-### Bug Fixes
+#### Fixed
 
-- 🧩 解决 useTable 查询参数 bug ([a86e408](https://github.com/HalseySpicy/Geeker-Admin/commit/a86e4089b6da8ab6a55bc84e069d665c06471676))
-- 🧩 修复 axios 请求超时未拦截错误 ([856468e](https://github.com/HalseySpicy/Geeker-Admin/commit/856468e84f8356d35c25097f3115dfe3d496914c))
-- 🧩 修复请求 header 参数丢失 bug ([3598dbc](https://github.com/HalseySpicy/Geeker-Admin/commit/3598dbc2a83aaacf9dada4e2c38a3ca27cbe4cfd))
+- Fixed repeated API calls issue when accessing invalid addresses for user info and menu endpoints
+- Fixed ElButton circle mode styles
+- Fixed ElSelect keyboard selection issue
+- Fixed static routes with parameters redirecting to login page issue
 
-### [0.0.4](https://github.com/HalseySpicy/Geeker-Admin/compare/v0.0.3...v0.0.4) (2022-07-12)
+#### Optimized
 
-### Features
+- Upgraded some dependencies to be compatible with tailwindcss
+- Optimized external link menu click selection state
+- Added theme color switching feature to authorization pages
 
-- 🚀 新增 主题色、灰色模式、色弱模式 配置 ([7821157](https://github.com/HalseySpicy/Geeker-Admin/commit/7821157059ed9c21d2844f75049f8fa999b19944))
-- 🚀 新增 pro-form ([3ab5a5b](https://github.com/HalseySpicy/Geeker-Admin/commit/3ab5a5b4f63fca227944ab6cc7928f6bf1f88ed4))
-- 🚀 新增菜单搜索功能 ([4aa0eef](https://github.com/HalseySpicy/Geeker-Admin/commit/4aa0eefaf427a2aa1aebd2b78dc049ffa776e838))
-- 🚀 新增界面配置功能 ([39ffc5e](https://github.com/HalseySpicy/Geeker-Admin/commit/39ffc5e9a77da3294055f23f8c87a4a44f3622f7))
-- 🚀 预定义主题颜色 ([8219178](https://github.com/HalseySpicy/Geeker-Admin/commit/82191789bcf6d21c623aa61c5a64e502cea44c2c))
-- 🚀 增加 SearchForm 属性透传 ([eadb89b](https://github.com/HalseySpicy/Geeker-Admin/commit/eadb89b687596980a82401f44c53430081078d04))
+---
 
-### Bug Fixes
+### v2.6.0 - 2025-10-16
 
-- 🧩 修复 pro-table 格式报错问题 ([2ef11fd](https://github.com/HalseySpicy/Geeker-Admin/commit/2ef11fda6d373c3214df801ae789cafc1a033dcb))
-- 🧩 修改文件导出失败 bug ([208e720](https://github.com/HalseySpicy/Geeker-Admin/commit/208e720688969d2bc0fa0a6cc2bae3e3b991c806))
-- 🧩 fix use pinia bug ([609aa69](https://github.com/HalseySpicy/Geeker-Admin/commit/609aa69aa9b3e0bb4e667ee7f76ab44051c2d2e8))
+#### Added
 
-### [0.0.2](https://github.com/HalseySpicy/Geeker-Admin/compare/v0.0.3...v0.0.2) (2022-06-29)
+- Extended registration and password reset page top component support
 
-### 0.0.2 (2022-06-20)
+#### Optimized
 
-### Features
+- Optimized streamlined version menu data structure, improved data consistency
+- Optimized local development environment network request proxy configuration
+- Optimized ElTree component default styles
+- Added VsCode recommended plugin related configuration
+- Optimized ElDropdown component click trigger mode interaction styles
+- Optimized menu filtering logic
+- Optimized page switching animation, improved loading speed
+- Optimized dark mode text color
 
-- 🚀 请求全局 loading 更改为可配置 ([a75d62f](https://github.com/HalseySpicy/Geeker-Admin/commit/a75d62f627195ac420cf24ad7f51245b2e5bf04e))
-- 🚀 升级 element-plus 到 2.2.5 ([e98c035](https://github.com/HalseySpicy/Geeker-Admin/commit/e98c035caa6d1ab04319673e0db65837c6887126))
-- 🚀 新增暗黑模式 ([215e499](https://github.com/HalseySpicy/Geeker-Admin/commit/215e499634b516234e653eac27a611d5f51ea6da))
-- 🚀 新增图标选择组件 ([ce5e165](https://github.com/HalseySpicy/Geeker-Admin/commit/ce5e165aed842074a9f7ac66ea97290710b541ee))
-- 🚀 修改 pinia 持久化插件 ([a7691ae](https://github.com/HalseySpicy/Geeker-Admin/commit/a7691aea614a035c4d381838149e08ad8477e49f))
-- 🚀 优化代码注释 && 升级 element 到 2.2.6 ([b84512b](https://github.com/HalseySpicy/Geeker-Admin/commit/b84512b3b102b00faa2f9241a32f5fbe27da4307))
+#### Fixed
 
-### Bug Fixes
+- Fixed static route custom home page path first visit redirecting to login page issue
+- Fixed logout briefly jumping to 500 page issue
+- Fixed v2.5.9 version home route redirect configuration failure issue
+- Fixed v2.5.9 auto-import mechanism causing build exception
 
-- 🧩 去除登陆页默认账号 ([3dda3fe](https://github.com/HalseySpicy/Geeker-Admin/commit/3dda3fee3fef38fdafcfdf3b1bf16e73033c6fe0))
-- 🧩 修复 Pro-Table 列设置 bug ([a3b86a0](https://github.com/HalseySpicy/Geeker-Admin/commit/a3b86a06a6d9cd4b6f7ac6e108727a0b4852e9a0))
-- 🧩 修复 loading 请求 bug ([a3270ec](https://github.com/HalseySpicy/Geeker-Admin/commit/a3270ecfa2e7c2484729ae6fd599febcc4f7be6b))
-- 🧩 修改 Pro-Table 表头渲染方式 ([aa57294](https://github.com/HalseySpicy/Geeker-Admin/commit/aa5729489942eaa6dca9928b70153af2de753a9c))
-- 🧩 修改 useTable 存在的 bug ([5bb55b3](https://github.com/HalseySpicy/Geeker-Admin/commit/5bb55b32c0b46bbf55fa0d49efe3a15d0b1673a4))
-- 🧩 修改 useTable 钩子中的 bug ([675aed8](https://github.com/HalseySpicy/Geeker-Admin/commit/675aed806e62c236b40bc933402c86085289df4e))
-- 🧩 修改 useTable 携带默认查询参数 bug ([ee585b2](https://github.com/HalseySpicy/Geeker-Admin/commit/ee585b29f3129b7143a10947fdd3184b197ad883))
+#### ⚠️ Important Notice
+
+> This version requires re-login
+
+---
+
+### v2.5.9 - 2025-10-12
+
+#### Code Optimized
+
+- Optimized views file directory, file names, and code
+- Added global configuration for useTable pagination request fields (tableConfig.ts)
+- Optimized routing configuration to modular structure
+- Menu API now uses apifox mock data (set VITE_ACCESS_MODE to backend mode in .env)
+
+---
+
+### v2.5.8 - 2025-09-29
+
+#### Upgraded
+
+- Upgraded core libraries including vue, vite, element-plus
+
+#### Fixed
+
+- Fixed rich text editor fullscreen top bar z-index issue
+- Fixed table column sorting component text overflow issue
+- Fixed statistics card condition judgment
+- Fixed infinite redirect when root path / and HOME_PAGE_PATH are both /
+
+#### Optimized
+
+- Optimized el-tag styles
+- Optimized top progress bar color
+- Optimized custom theme configuration
+- Optimized ElementPlus custom theme issues
+
+#### ⚠️ Important Notice
+
+> Due to dependency upgrades, Node version needs to be upgraded to v20.19.0 or above
+
+---
+
+### v2.5.7 - 2025-09-14
+
+#### Added
+
+- Added ArtForm component
+
+#### Fixed
+
+- Fixed theme switching flicker issue in new Chrome versions
+
+#### Optimized
+
+- Optimized form label height alignment issue
+- First screen startup performance optimization
+
+---
+
+### v2.5.6 - 2025-09-06
+
+#### Added
+
+- ArtTableHeader added search button to control top search bar visibility
+- Added permission demonstration examples
+- Added global error handling framework
+
+#### Optimized
+
+- useTable type inference optimization, no need to manually pass types for type hints
+- useTable removeColumn supports multiple data deletion
+- useTable auto-recognizes response body with custom configuration (src/utils/table/tableConfig.ts)
+- useTable empty data browser warning optimization
+- API request code optimization, api.d.ts type optimization
+- Optimized ArtTable top button wrapping adaptive issue
+- ArtTable pagination component selection style optimization
+- ArtTable empty state height fills by default
+- ArtButtonMore component added icon and color configuration
+- ArtSearchBar label doesn't occupy space when empty
+- Table operation column drag prohibits fixed column dragging
+- Role management page API integration and code optimization
+- Menu management page optimization
+- Optimized settings center scroll following issue
+- First-level route external link component validation logic optimization
+- Optimized map bottom-right drag issue
+- Optimized dark mode page refresh white background issue
+- Optimized left menu collapse button spacing issue
+- Mobile displays left menu logo
+- Network request added showSuccessMessage to configure success message display
+- Global components use async loading strategy to improve first screen loading performance
+
+#### Fixed
+
+- Fixed bug where batch deleting entire page data doesn't return to previous page
+- Fixed dynamic route parameter issues
+- Fixed dynamic route configuration first-level route iframe page fullscreen issue
+
+---
+
+### v2.5.5 - 2025-08-17
+
+#### Added
+
+- Added ArtSearchBar component examples
+- useTable added excludeParams to exclude certain parameters from requests
+
+#### Refactored
+
+- Refactored ArtSearchBar component, supports more components and form validation
+
+#### Optimized
+
+- useTable column configuration: supports dynamic update capability
+- Optimized color picker border radius
+- Unified el-radio and el-checkbox sizes
+- art-stats-card added decimal places and separator configuration
+- Route configuration example optimization
+- Advanced table added custom data fetching example
+- Optimized path alias type issues
+- Local development CORS configuration optimization
+- useTable property and method naming optimization
+- Login page UI upgrade
+- 403, 404, 500 page UI upgrade
+
+#### Fixed
+
+- Fixed multiple rich text editor icon inconsistency issue
+- Fixed useTable deleting last entire page data not returning to previous page issue
+- Fixed echarts chart data initialization and update browser error
+- Network request supports logout on HTTP status code 401
+- Optimized network request logout multiple prompt issue
+
+#### Removed
+
+- Removed art-chart-empty component
+
+---
+
+### v2.5.4 - 2025-07-27
+
+#### Added
+
+- Network request headers support custom configuration
+- Expand row supports formatter rendering
+
+#### Optimized
+
+- Route registration added component validation
+
+#### Fixed
+
+- Fixed user info API timing issue causing route registration menu rendering error
+- Fixed dynamic route validation issue causing iframe not to display
+- Fixed reset file syntax error
+- Fixed ArtTable data type error
+- Fixed map scroll wheel zoom issue
+
+---
+
+### v2.5.3 - 2025-07-20
+
+#### Added
+
+- Added table left-right layout example
+
+#### Refactored
+
+- ArtTable component refactored
+
+#### Upgraded
+
+- Element Plus upgraded to v2.10.2
+
+#### Optimized
+
+- Optimized useTable pagination parameter issue
+- Optimized network request example: initialization parameters, pagination carrying parameters
+- Optimized search date range parameter handling
+- Optimized el-date-picker component border radius
+- Optimized el-select component hover style
+- Search component and pagination component height reduced
+- Optimized login page slider animation interval
+- Optimized menu without submenu display issue
+
+#### Fixed
+
+- Fixed ArtTable switching page size executing two requests bug
+
+---
+
+### v2.5.2 - 2025-07-13
+
+#### Added
+
+- Added one-click cleanup script for quick development environment preparation
+- useTable hooks support custom pagination field name mapping
+- Horizontal menu, mixed menu, double column menu support badge display
+- Quick entry supports configuration file mode
+- Top bar function supports configuration file mode
+- Support custom home page path
+- Route supports redirect and other attributes configuration
+
+#### Optimized
+
+- Global event bus mittBus type safety optimization
+- Optimized mobile settings container width style
+- Optimized login page verification slider text centering effect
+
+#### Fixed
+
+- Fixed table no data header not displaying issue
+- Fixed v2.5.0 top progress bar not displaying issue
+- Fixed left menu mask abnormal display issue
+- Fixed hiding all submenus still showing parent menu issue
+- Fixed stylelint causing login page slider style abnormality
+- Fixed old mobile device loading positioning issue
+
+---
+
+### v2.5.1 - 2025-07-08
+
+#### Optimized
+
+- el-card and el-table background color consistent with system
+
+#### Fixed
+
+- Fixed first login system loading closing early bug
+- Fixed v2.5.0 version causing fullscreen page style z-index too low bug
+- Fixed v2.5.0 version causing table expand row collapse bug
+
+---
+
+### v2.5.0 - 2025-07-06 🎉
+
+#### Added
+
+- Added useTable hooks table encapsulation, supports data fetching, transformation, response adaptation, intelligent caching (based on LRU algorithm), error handling, column configuration and slots, pagination control, refresh strategies and other core functions, comprehensively improving development efficiency and user experience
+
+#### Refactored
+
+- Refactored ArtTable, ArtTableHeader, ArtNotification components
+
+#### Upgraded
+
+- Echarts version upgraded to 5.6.0
+
+#### Removed
+
+- Removed CountTo plugin, replaced with ArtCountTo component
+
+#### Fixed
+
+- Fixed menu management search directly modifying pinia data issue
+- Fixed route guard loading flicker issue
+
+#### ⚠️ Important Notice
+
+> Recommended upgrade for more efficient and intelligent table development experience
+
+---
+
+### v2.4.2.9 - 2025-07-02
+
+#### Refactored
+
+- Menu layout and top navigation code refactored
+
+#### Optimized
+
+- Optimized mobile menu scroll user experience
+- Optimized top menu style issues
+- Top menu width adaptive, can display more content, mixed menu supports mouse scroll
+- asyncRoutes route configuration auth_mark field changed to authMark
+- Removed duplicate components.d.ts file, components.d.ts and auto-imports.d.ts ignored from commits
+- Optimized i18n language file loading method, changed from async to sync mode
+- Optimized el-pagination size inconsistency issue
+
+#### Fixed
+
+- Fixed mobile lock screen page some browsers unable to unlock bug
+
+---
+
+### v2.4.2.8 - 2025-06-26
+
+#### Fixed
+
+- Fixed v2.4.2.7 version accessing / path showing 404 issue
+
+---
+
+### v2.4.2.7 - 2025-06-25
+
+#### Added
+
+- Route supports fullscreen mode configuration
+- Route supports auto-jump to first valid route of menu
+- Dynamic route added removeAllDynamicRoutes method for completely clearing all dynamic routes
+- Permission custom directive optimization, added role permission directive v-roles for controlling element visibility
+- Added tab operation examples
+
+#### Optimized
+
+- CORS request carrying cookie configuration from environment variables, disabled by default
+- Some optimizations for SEO and accessibility
+
+#### Fixed
+
+- Fixed login page drag component ArtDragVerify width and color abnormal bug
+- Fixed iframe page mixed mode and double column mode abnormal bug
+- Optimized lock screen page being penetrated by el-loading bug
+
+---
+
+### v2.4.2.6 - 2025-06-23
+
+#### Refactored
+
+- Refactored form-related components in components/core/forms folder, improved maintainability and consistency
+- Refactored ArtBreadcrumb breadcrumb navigation component, optimized logic structure and styles
+- Refactored ArtFireworksEffect fireworks effect component, significantly improved rendering performance and animation smoothness
+
+#### Optimized
+
+- Optimized ArtChatWindow and ArtFastEnter component code, improved readability and performance
+
+#### Added
+
+- README documentation added official website link for easy access to project documentation
+
+---
+
+### v2.4.2.5 - 2025-06-22
+
+#### Refactored
+
+- Refactored chart components, optimized code structure and maintainability
+- Fine-tuned chart animations and theme color schemes, improved visual consistency
+
+---
+
+### v2.4.2.4 - 2025-06-18
+
+#### Refactored
+
+- ArtMenuRight component refactored
+- Components under components/core/cards refactored, code optimized
+
+#### Optimized
+
+- ArtWatermark added type annotations
+
+---
+
+### v2.4.2.3 - 2025-06-18
+
+#### Refactored
+
+- ArtResultPage component refactored
+
+#### Optimized
+
+- ArtTextScroll component code optimization
+- ArtException component added type hints
+- ArtCutterImg component style optimization, added type definitions
+- ArtVideoPlayer component added type definitions
+
+---
+
+### v2.4.2.2 - 2025-06-16
+
+#### Refactored
+
+- Back to top component refactored
+- Icon selector component refactored
+
+#### Changed
+
+- System Logo component property changes
+
+---
+
+### v2.4.2.1 - 2025-06-16
+
+#### Refactored
+
+- Banner component refactored and optimized
+
+#### Fixed
+
+- Fixed mixed menu first menu nested menu jump bug
+
+---
+
+### v2.4.2 - 2025-06-14
+
+#### Refactored
+
+- Refactored network request module, enhanced error handling, type safety and multi-language support
+
+#### Added
+
+- Route configuration added activePath active menu path property
+
+#### Optimized
+
+- Guide and column settings multi-language improvement
+- Removed invalid code from user list and menu management pages
+- Updated technical support link
+
+#### Fixed
+
+- Fixed mobile search bar unable to scroll, iPad page scroll abnormal issue
+- Fixed el-dialog enabling draggable property causing custom animation failure issue
+- Fixed v2.3.0 local storage refactoring causing login, registration page multi-language settings unable to persist issue
+- Fixed table fixed column not working bug
+- Fixed infinite redirect when root path / and HOME_PAGE_PATH are both /
+
+#### ⚠️ Important Notice
+
+> This version requires re-login
+
+---
+
+### v2.4.1.1 - 2025-06-07
+
+#### Optimized
+
+- Optimized role management page code
+- el-dialog visual effect optimization, supports line configuration
+- System theme mode changed from Light to follow system mode
+
+#### Fixed
+
+- Fixed menu management collapse bug
+- Fixed table empty data height infinitely growing bug
+
+---
+
+### v2.4.1 - 2025-06-07
+
+#### Added
+
+- Prohibit using developer tools to crack lock screen when locked
+
+#### Optimized
+
+- Improved menu operation responsiveness
+- Page entrance animation time reduced by 0.04s
+- Echarts chart performance optimization, added visible area initialization, memory leak protection, debounce handling
+
+#### Fixed
+
+- Fixed Echarts chart component not displaying in dialog bug
+
+---
+
+### v2.4.0 - 2025-06-06 🎉
+
+#### Refactored
+
+- Global TypeScript type system refactored, improved type accuracy and maintainability
+- Refactored utils toolkit, unified utility method structure, enhanced readability and reusability
+
+#### Added
+
+- utils added form validation and Cookie operation related utility functions
+- Page components added defineOptions for explicit component naming
+- HTTP request added token expiration auto-handling logic, improved security and user experience
+
+#### Optimized
+
+- Deleted unused utility modules and invalid resources, streamlined project size
+- Optimized views page structure, removed redundant page files
+- Exception page multi-language support, improved internationalization experience
+- Image resources uniformly converted to webp format, overall resource size reduced by about 50%
+- Build output reduced by about 1MB, improved loading efficiency
+
+#### ⚠️ Important Notice
+
+> This version requires re-login
+
+---
+
+## Version Guidelines
+
+### Version Number Rules
+
+This project follows [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html):
+
+- **Major**: Incompatible API changes
+- **Minor**: Backwards-compatible functionality additions
+- **Patch**: Backwards-compatible bug fixes
+
+### Change Types
+
+- **Added**: New features
+- **Changed**: Changes to existing functionality
+- **Deprecated**: Soon-to-be removed features
+- **Removed**: Removed features
+- **Fixed**: Bug fixes
+- **Security**: Security-related fixes
+- **Optimized**: Performance or experience optimizations
+- **Refactored**: Code refactoring
+- **Upgraded**: Dependency upgrades
+
+### Important Notice Markers
+
+- 🎉 **Major Update**: Versions with important new features
+- ⚠️ **Breaking Changes**: Updates requiring special attention for incompatibility
+- 🔒 **Security Update**: Versions fixing security vulnerabilities
+
+---
+
+## Contributing
+
+If you want to contribute to the project, please check [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## License
+
+[MIT License](./LICENSE)
+
+---
+
+**Note**: This changelog starts recording from version v2.4.0. For earlier version history, please check Git commit records.

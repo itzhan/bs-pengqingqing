@@ -19,7 +19,7 @@ public class SkillCategoryController {
 
     private final SkillCategoryService categoryService;
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listCategories() {
         List<SkillCategory> categories = categoryService.listAll();
         return Result.success(categories);
@@ -31,7 +31,7 @@ public class SkillCategoryController {
         return Result.success(tree);
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("创建技艺类别")
     public Result<?> createCategory(@Valid @RequestBody SkillCategoryDTO dto) {
         categoryService.createCategory(dto);

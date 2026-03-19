@@ -25,7 +25,7 @@ public class UserController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listUsers(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

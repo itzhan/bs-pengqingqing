@@ -33,6 +33,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             throw new BusinessException("用户名已存在");
         }
 
+        String normalizedRole = normalizeRole(dto.getRole());
+        if (!"MASTER".equals(normalizedRole) && !"APPRENTICE".equals(normalizedRole)) {
+            throw new BusinessException("角色参数不合法");
+        }
+
         SysUser user = new SysUser();
         user.setUsername(dto.getUsername());
         user.setPassword(encoder.encode(dto.getPassword()));
@@ -40,7 +45,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         user.setPhone(dto.getPhone());
         user.setEmail(dto.getEmail());
         user.setGender(dto.getGender());
-        user.setRole(dto.getRole());
+        user.setRole(normalizedRole);
         user.setStatus(1); // default status = 1
 
         save(user);
@@ -97,7 +102,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                         SysUser::getStatus, SysUser::getCreatedAt, SysUser::getUpdatedAt);
 
         if (role != null && !role.isEmpty()) {
-            wrapper.eq(SysUser::getRole, role);
+            wrapper.eq(SysUser::getRole, normalizeRole(role));
         }
 
         if (keyword != null && !keyword.isEmpty()) {
@@ -117,5 +122,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
         user.setStatus(status);
         updateById(user);
+    }
+
+    private String normalizeRole(String role) {
+        return role == null ? "" : role.trim().toUpperCase();
     }
 }

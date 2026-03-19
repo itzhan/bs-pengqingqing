@@ -28,4 +28,7 @@ public class HeritageProject {
     @TableLogic(value = "NULL", delval = "NOW()")
     @TableField("deleted_at")
     private LocalDateTime deletedAt;
+
+    @TableField(exist = false)
+    private String categoryName;
 }

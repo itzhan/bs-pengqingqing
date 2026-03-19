@@ -23,7 +23,7 @@ public class TeachingTaskController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("发布教学任务")
     public Result<?> createTask(@Valid @RequestBody TeachingTaskDTO dto) {
         SysUser currentUser = getCurrentUser();
@@ -48,9 +48,10 @@ public class TeachingTaskController {
     @GetMapping("/master")
     public Result<?> getMasterTasks(
             @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) Long apprenticeId) {
         SysUser currentUser = getCurrentUser();
-        PageResult<TeachingTask> result = taskService.listByMaster(currentUser.getId(), page, size);
+        PageResult<TeachingTask> result = taskService.listByMaster(currentUser.getId(), page, size, apprenticeId);
         return Result.success(result);
     }
 
@@ -65,11 +66,12 @@ public class TeachingTaskController {
 
     @GetMapping("/{id}")
     public Result<?> getTask(@PathVariable Long id) {
-        TeachingTask task = taskService.getById(id);
+        SysUser currentUser = getCurrentUser();
+        TeachingTask task = taskService.getTaskDetail(id, currentUser.getId());
         return Result.success(task);
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listAll(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

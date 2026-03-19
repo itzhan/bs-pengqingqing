@@ -1,0 +1,185 @@
+/* ============================================
+   非遗技艺师徒档案传承管理系统 — 东方禅意·水墨传承
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  /* ── Primary ── */
+  --primary: #2C3E50;
+  --primary-light: #3D556E;
+  --primary-dark: #1A252F;
+  --primary-bg: rgba(44, 62, 80, 0.06);
+
+  /* ── Accent ── */
+  --accent: #C0392B;
+  --accent-light: #E74C3C;
+  --accent-soft: rgba(192, 57, 43, 0.08);
+
+  /* ── Surface ── */
+  --bg-page: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --bg-hero: linear-gradient(135deg, #FAF8F5 0%, #F0EDE6 100%);
+
+  /* ── Text ── */
+  --text-primary: #1A1A1A;
+  --text-body: #5A5A5A;
+  --text-secondary: #8C8C8C;
+  --text-placeholder: #BFBFBF;
+
+  /* ── Border ── */
+  --border: #E8E2D8;
+  --border-light: #F0EDE6;
+
+  /* ── Semantic ── */
+  --success: #27AE60;
+  --warning: #F39C12;
+  --error: #E74C3C;
+  --info: #3498DB;
+
+  /* ── Shadow ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+  --shadow-hover: 0 8px 20px rgba(0,0,0,0.12);
+
+  /* ── Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* ── Font ── */
+  --font-serif: 'Noto Serif SC', serif;
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ── Transition ── */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-body);
+  background: var(--bg-page);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--primary); text-decoration: none; transition: color 0.2s var(--ease); }
+a:hover { color: var(--primary-light); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D0CBC3; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #B0AAA0; }
+
+/* ── Utility Classes ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: 64px 0; }
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.page-header {
+  padding: 48px 0 32px;
+  text-align: center;
+}
+.page-header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.page-header p {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+/* ── Tag ── */
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.tag-primary { background: var(--primary-bg); color: var(--primary); }
+.tag-accent { background: var(--accent-soft); color: var(--accent); }
+.tag-success { background: rgba(39,174,96,0.08); color: var(--success); }
+.tag-warning { background: rgba(243,156,18,0.08); color: var(--warning); }
+
+/* ── Button helpers ── */
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+.btn-text:hover { color: var(--primary-light); }
+
+/* ── Fade transition ── */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s var(--ease);
+}
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--text-secondary);
+}
+.empty-state svg { margin-bottom: 16px; opacity: 0.4; }

@@ -23,11 +23,18 @@ public class LearningMaterialController {
         return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    @PostMapping("/")
+    @PostMapping({"", "/"})
     @AuditOperation("上传学习材料")
     public Result<?> createMaterial(@Valid @RequestBody LearningMaterialDTO dto) {
         SysUser currentUser = getCurrentUser();
         materialService.createMaterial(currentUser.getId(), dto);
+        return Result.success();
+    }
+
+    @PutMapping("/{id}")
+    public Result<?> updateMaterial(@PathVariable Long id, @Valid @RequestBody LearningMaterialDTO dto) {
+        SysUser currentUser = getCurrentUser();
+        materialService.updateMaterial(id, currentUser.getId(), dto);
         return Result.success();
     }
 
@@ -55,11 +62,10 @@ public class LearningMaterialController {
         return Result.success(result);
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public Result<?> listAll(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size) {
-        PageResult<LearningMaterial> result = materialService.listAll(page, size);
-        return Result.success(result);
+        return Result.success(materialService.listAll(page, size));
     }
 }

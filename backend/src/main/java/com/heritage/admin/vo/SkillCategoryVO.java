@@ -8,6 +8,7 @@ public class SkillCategoryVO {
     private Long id;
     private String name;
     private Long parentId;
+    private String parentName;
     private Integer sortOrder;
     private String description;
     private List<SkillCategoryVO> children;

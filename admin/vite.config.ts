@@ -1,78 +1,149 @@
-import { defineConfig, loadEnv, ConfigEnv, UserConfig } from "vite";
-import { resolve } from "path";
-import { wrapperEnv } from "./build/getEnv";
-import { createProxy } from "./build/proxy";
-import { createVitePlugins } from "./build/plugins";
-import pkg from "./package.json";
-import dayjs from "dayjs";
+import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import viteCompression from 'vite-plugin-compression'
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import ElementPlus from 'unplugin-element-plus/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import tailwindcss from '@tailwindcss/vite'
+// import { visualizer } from 'rollup-plugin-visualizer'
 
-const { dependencies, devDependencies, name, version } = pkg;
-const __APP_INFO__ = {
-  pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: dayjs().format("YYYY-MM-DD HH:mm:ss")
-};
+export default async ({ mode, command }: { mode: string; command: string }) => {
+  const root = process.cwd()
+  const env = loadEnv(mode, root)
+  const { VITE_VERSION, VITE_PORT, VITE_BASE_URL, VITE_API_URL, VITE_API_PROXY_URL } = env
+  const plugins = [
+    vue(),
+    tailwindcss(),
+    AutoImport({
+      imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+      dts: 'src/types/import/auto-imports.d.ts',
+      resolvers: [ElementPlusResolver()],
+      eslintrc: {
+        enabled: true,
+        filepath: './.auto-import.json',
+        globalsPropValue: true
+      }
+    }),
+    Components({
+      dts: 'src/types/import/components.d.ts',
+      resolvers: [ElementPlusResolver()]
+    }),
+    ElementPlus({
+      useSource: true
+    }),
+    viteCompression({
+      verbose: false,
+      disable: false,
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 10240,
+      deleteOriginFile: false
+    })
+  ]
 
-// @see: https://vitejs.dev/config/
-export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
-  const root = process.cwd();
-  const env = loadEnv(mode, root);
-  const viteEnv = wrapperEnv(env);
+  if (command === 'serve') {
+    const { default: vueDevTools } = await import('vite-plugin-vue-devtools')
+    plugins.push(vueDevTools())
+  }
 
-  return {
-    base: viteEnv.VITE_PUBLIC_PATH,
-    root,
+  console.log(`🚀 API_URL = ${VITE_API_URL}`)
+  console.log(`🚀 VERSION = ${VITE_VERSION}`)
+
+  return defineConfig({
+    define: {
+      __APP_VERSION__: JSON.stringify(VITE_VERSION)
+    },
+    base: VITE_BASE_URL,
+    server: {
+      port: Number(VITE_PORT),
+      proxy: {
+        '/api': {
+          target: VITE_API_PROXY_URL,
+          changeOrigin: true
+        }
+      },
+      host: true
+    },
+    // 路径别名
     resolve: {
       alias: {
-        "@": resolve(__dirname, "./src"),
-        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@views': resolvePath('src/views'),
+        '@imgs': resolvePath('src/assets/images'),
+        '@icons': resolvePath('src/assets/icons'),
+        '@utils': resolvePath('src/utils'),
+        '@stores': resolvePath('src/store'),
+        '@styles': resolvePath('src/assets/styles')
       }
     },
-    define: {
-      __APP_INFO__: JSON.stringify(__APP_INFO__)
+    build: {
+      target: 'es2015',
+      outDir: 'dist',
+      chunkSizeWarningLimit: 2000,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          // 生产环境去除 console
+          drop_console: true,
+          // 生产环境去除 debugger
+          drop_debugger: true
+        }
+      },
+      dynamicImportVarsOptions: {
+        warnOnError: true,
+        exclude: [],
+        include: ['src/views/**/*.vue']
+      }
+    },
+    plugins,
+    // 依赖预构建：避免运行时重复请求与转换，提升首次加载速度
+    optimizeDeps: {
+      include: [
+        'echarts/core',
+        'echarts/charts',
+        'echarts/components',
+        'echarts/renderers',
+        'xlsx',
+        'xgplayer',
+        'crypto-js',
+        'file-saver',
+        'vue-img-cutter',
+        'element-plus/es',
+        'element-plus/es/components/*/style/css',
+        'element-plus/es/components/*/style/index'
+      ]
     },
     css: {
       preprocessorOptions: {
+        // sass variable and mixin
         scss: {
-          additionalData: `@import "@/styles/var.scss";`
+          additionalData: `
+            @use "@styles/core/el-light.scss" as *; 
+            @use "@styles/core/mixin.scss" as *;
+          `
         }
-      }
-    },
-    server: {
-      host: "0.0.0.0",
-      port: viteEnv.VITE_PORT,
-      open: viteEnv.VITE_OPEN,
-      cors: true,
-      // Load proxy configuration from .env.development
-      proxy: createProxy(viteEnv.VITE_PROXY)
-    },
-    plugins: createVitePlugins(viteEnv),
-    esbuild: {
-      pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
-    },
-    build: {
-      outDir: "dist",
-      minify: "esbuild",
-      // esbuild 打包更快，但是不能去除 console.log，terser打包慢，但能去除 console.log
-      // minify: "terser",
-      // terserOptions: {
-      // 	compress: {
-      // 		drop_console: viteEnv.VITE_DROP_CONSOLE,
-      // 		drop_debugger: true
-      // 	}
-      // },
-      sourcemap: false,
-      // 禁用 gzip 压缩大小报告，可略微减少打包时间
-      reportCompressedSize: false,
-      // 规定触发警告的 chunk 大小
-      chunkSizeWarningLimit: 2000,
-      rollupOptions: {
-        output: {
-          // Static resource classification and packaging
-          chunkFileNames: "assets/js/[name]-[hash].js",
-          entryFileNames: "assets/js/[name]-[hash].js",
-          assetFileNames: "assets/[ext]/[name]-[hash].[ext]"
-        }
+      },
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: 'internal:charset-removal',
+            AtRule: {
+              charset: (atRule) => {
+                if (atRule.name === 'charset') {
+                  atRule.remove()
+                }
+              }
+            }
+          }
+        ]
       }
     }
-  };
-});
+  })
+}
+
+function resolvePath(paths: string) {
+  return path.resolve(__dirname, paths)
+}

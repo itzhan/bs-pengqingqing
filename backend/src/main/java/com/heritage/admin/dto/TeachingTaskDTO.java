@@ -9,6 +9,7 @@ public class TeachingTaskDTO {
     @NotBlank(message = "任务标题不能为空")
     private String title;
     private String description;
+    private Long apprenticeId;
     private Long heritageProjectId;
     private Long skillCategoryId;
     private LocalDateTime deadline;

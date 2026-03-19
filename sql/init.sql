@@ -142,6 +142,7 @@ CREATE TABLE `teaching_task` (
     `title` VARCHAR(200) NOT NULL COMMENT '任务标题',
     `description` TEXT COMMENT '任务描述',
     `master_id` BIGINT NOT NULL COMMENT '师傅用户ID',
+    `apprentice_id` BIGINT DEFAULT NULL COMMENT '指定徒弟ID，NULL表示面向全部有效徒弟',
     `heritage_project_id` BIGINT DEFAULT NULL COMMENT '非遗项目ID',
     `skill_category_id` BIGINT DEFAULT NULL COMMENT '技艺类别ID',
     `deadline` DATETIME DEFAULT NULL COMMENT '截止时间',
@@ -151,6 +152,7 @@ CREATE TABLE `teaching_task` (
     `deleted_at` DATETIME DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `idx_master_id` (`master_id`),
+    KEY `idx_apprentice_id` (`apprentice_id`),
     KEY `idx_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='教学任务表';
 

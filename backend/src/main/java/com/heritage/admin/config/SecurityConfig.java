@@ -53,9 +53,16 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/auth/login", "/api/auth/register").permitAll()
                 .requestMatchers("/uploads/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                // 公开浏览接口（GET）
+                .requestMatchers(HttpMethod.GET, "/api/heritage-projects/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/skill-categories/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/master-profiles/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/activities/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/announcements/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/statistics/**").permitAll()
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

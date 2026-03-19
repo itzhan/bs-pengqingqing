@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.heritage.admin.common.PageResult;
 import com.heritage.admin.dto.ArtworkDTO;
 import com.heritage.admin.entity.Artwork;
+import com.heritage.admin.vo.ArtworkVO;
 
 public interface ArtworkService extends IService<Artwork> {
     void createArtwork(Long apprenticeId, ArtworkDTO dto);
@@ -11,5 +12,6 @@ public interface ArtworkService extends IService<Artwork> {
     void submitArtwork(Long artworkId, Long apprenticeId);
     PageResult<Artwork> listByApprentice(Long apprenticeId, int page, int size);
     PageResult<Artwork> listByMaster(Long masterId, int page, int size);
-    PageResult<Artwork> listAll(int page, int size, Integer status);
+    PageResult<ArtworkVO> listAll(int page, int size, Integer status);
 }
+
